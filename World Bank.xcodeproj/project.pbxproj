@@ -1,0 +1,469 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		455CF41C29F8A94C0059D990 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CF41B29F8A94C0059D990 /* AppDelegate.swift */; };
+		455CF41E29F8A94C0059D990 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CF41D29F8A94C0059D990 /* SceneDelegate.swift */; };
+		455CF42329F8A94C0059D990 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 455CF42129F8A94C0059D990 /* Main.storyboard */; };
+		455CF42529F8A94D0059D990 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 455CF42429F8A94D0059D990 /* Assets.xcassets */; };
+		455CF42829F8A94D0059D990 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 455CF42629F8A94D0059D990 /* LaunchScreen.storyboard */; };
+		455CF43329F8AE260059D990 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 455CF43229F8AE260059D990 /* GoogleService-Info.plist */; };
+		455CF43529F8AF230059D990 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CF43429F8AF230059D990 /* LoginVC.swift */; };
+		455CF43729F8AF390059D990 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CF43629F8AF390059D990 /* SignUpVC.swift */; };
+		455CF43929F8AF650059D990 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CF43829F8AF650059D990 /* HomeVC.swift */; };
+		BF98FA786DB6C504455E9DCE /* Pods_World_Bank.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57BF55218D5155BBA72758F3 /* Pods_World_Bank.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		455CF41829F8A94C0059D990 /* World Bank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "World Bank.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		455CF41B29F8A94C0059D990 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		455CF41D29F8A94C0059D990 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		455CF42229F8A94C0059D990 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		455CF42429F8A94D0059D990 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		455CF42729F8A94D0059D990 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		455CF42929F8A94D0059D990 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		455CF43229F8AE260059D990 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		455CF43429F8AF230059D990 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		455CF43629F8AF390059D990 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		455CF43829F8AF650059D990 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		50DF7F6316E0ED37D9AF201C /* Pods-World Bank.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-World Bank.debug.xcconfig"; path = "Target Support Files/Pods-World Bank/Pods-World Bank.debug.xcconfig"; sourceTree = "<group>"; };
+		57BF55218D5155BBA72758F3 /* Pods_World_Bank.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_World_Bank.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		771940D8912C75F69E396F3D /* Pods-World Bank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-World Bank.release.xcconfig"; path = "Target Support Files/Pods-World Bank/Pods-World Bank.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		455CF41529F8A94C0059D990 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF98FA786DB6C504455E9DCE /* Pods_World_Bank.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		455CF40F29F8A94C0059D990 = {
+			isa = PBXGroup;
+			children = (
+				455CF41A29F8A94C0059D990 /* World Bank */,
+				455CF41929F8A94C0059D990 /* Products */,
+				E739C56516EA9E61BF3C0F26 /* Pods */,
+				82316FECB543126AA6044017 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		455CF41929F8A94C0059D990 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				455CF41829F8A94C0059D990 /* World Bank.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		455CF41A29F8A94C0059D990 /* World Bank */ = {
+			isa = PBXGroup;
+			children = (
+				455CF41B29F8A94C0059D990 /* AppDelegate.swift */,
+				455CF41D29F8A94C0059D990 /* SceneDelegate.swift */,
+				455CF43129F8AAC20059D990 /* Controllers */,
+				455CF43029F8AABA0059D990 /* Views */,
+				455CF42F29F8AAB30059D990 /* Models */,
+				455CF42429F8A94D0059D990 /* Assets.xcassets */,
+				455CF42629F8A94D0059D990 /* LaunchScreen.storyboard */,
+				455CF42929F8A94D0059D990 /* Info.plist */,
+				455CF43229F8AE260059D990 /* GoogleService-Info.plist */,
+			);
+			path = "World Bank";
+			sourceTree = "<group>";
+		};
+		455CF42F29F8AAB30059D990 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		455CF43029F8AABA0059D990 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				455CF42129F8A94C0059D990 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		455CF43129F8AAC20059D990 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				455CF43429F8AF230059D990 /* LoginVC.swift */,
+				455CF43629F8AF390059D990 /* SignUpVC.swift */,
+				455CF43829F8AF650059D990 /* HomeVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		82316FECB543126AA6044017 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				57BF55218D5155BBA72758F3 /* Pods_World_Bank.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E739C56516EA9E61BF3C0F26 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				50DF7F6316E0ED37D9AF201C /* Pods-World Bank.debug.xcconfig */,
+				771940D8912C75F69E396F3D /* Pods-World Bank.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		455CF41729F8A94C0059D990 /* World Bank */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 455CF42C29F8A94D0059D990 /* Build configuration list for PBXNativeTarget "World Bank" */;
+			buildPhases = (
+				1A4BFED72627BF3539D3A2E9 /* [CP] Check Pods Manifest.lock */,
+				455CF41429F8A94C0059D990 /* Sources */,
+				455CF41529F8A94C0059D990 /* Frameworks */,
+				455CF41629F8A94C0059D990 /* Resources */,
+				B0DADC43AA09A0146F00E14B /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "World Bank";
+			productName = "World Bank";
+			productReference = 455CF41829F8A94C0059D990 /* World Bank.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		455CF41029F8A94C0059D990 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					455CF41729F8A94C0059D990 = {
+						CreatedOnToolsVersion = 14.3;
+					};
+				};
+			};
+			buildConfigurationList = 455CF41329F8A94C0059D990 /* Build configuration list for PBXProject "World Bank" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 455CF40F29F8A94C0059D990;
+			productRefGroup = 455CF41929F8A94C0059D990 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				455CF41729F8A94C0059D990 /* World Bank */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		455CF41629F8A94C0059D990 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				455CF42829F8A94D0059D990 /* LaunchScreen.storyboard in Resources */,
+				455CF43329F8AE260059D990 /* GoogleService-Info.plist in Resources */,
+				455CF42529F8A94D0059D990 /* Assets.xcassets in Resources */,
+				455CF42329F8A94C0059D990 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1A4BFED72627BF3539D3A2E9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-World Bank-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B0DADC43AA09A0146F00E14B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-World Bank/Pods-World Bank-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-World Bank/Pods-World Bank-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-World Bank/Pods-World Bank-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		455CF41429F8A94C0059D990 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				455CF41C29F8A94C0059D990 /* AppDelegate.swift in Sources */,
+				455CF43529F8AF230059D990 /* LoginVC.swift in Sources */,
+				455CF43929F8AF650059D990 /* HomeVC.swift in Sources */,
+				455CF43729F8AF390059D990 /* SignUpVC.swift in Sources */,
+				455CF41E29F8A94C0059D990 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		455CF42129F8A94C0059D990 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				455CF42229F8A94C0059D990 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		455CF42629F8A94D0059D990 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				455CF42729F8A94D0059D990 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		455CF42A29F8A94D0059D990 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		455CF42B29F8A94D0059D990 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		455CF42D29F8A94D0059D990 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50DF7F6316E0ED37D9AF201C /* Pods-World Bank.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W95B5TW28L;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "World Bank/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hassaneSidibe.World-Bank";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		455CF42E29F8A94D0059D990 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 771940D8912C75F69E396F3D /* Pods-World Bank.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W95B5TW28L;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "World Bank/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hassaneSidibe.World-Bank";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		455CF41329F8A94C0059D990 /* Build configuration list for PBXProject "World Bank" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				455CF42A29F8A94D0059D990 /* Debug */,
+				455CF42B29F8A94D0059D990 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		455CF42C29F8A94D0059D990 /* Build configuration list for PBXNativeTarget "World Bank" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				455CF42D29F8A94D0059D990 /* Debug */,
+				455CF42E29F8A94D0059D990 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 455CF41029F8A94C0059D990 /* Project object */;
+}

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>266213465303-5eo8miq0b7caflbg1qgj6t1ipg9anf2j.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.266213465303-5eo8miq0b7caflbg1qgj6t1ipg9anf2j</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBJlxp9C06WRAuP7dDPbxCq-SQPH39QE0c</string>
+	<key>GCM_SENDER_ID</key>
+	<string>266213465303</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.hassaneSidibe.World-Bank</string>
+	<key>PROJECT_ID</key>
+	<string>world-bank-92339</string>
+	<key>STORAGE_BUCKET</key>
+	<string>world-bank-92339.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:266213465303:ios:0c05ca788aabee954fa492</string>
+</dict>
+</plist>
