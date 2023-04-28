@@ -7,9 +7,11 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
 
 class SignUpVC: UIViewController {
     
+    let db = Firestore.firestore()
     
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
@@ -38,6 +40,28 @@ class SignUpVC: UIViewController {
                     return
 
                 } else {
+                    //Create new bank account and save it to database
+                    //The savings, checking, and credit card balance should be set to zerp
+                    
+//                    I STOPPED HERE, I AM ABLE TO SAVE NEW ACCOUNT DATA TO FIRESTORE
+                    
+                    self.db.collection(K.FStore.collectionName).addDocument(data: [
+                        K.FStore.firstNameField : firstName,
+                        K.FStore.lastNameField : lastName,
+                        K.FStore.emailField : email,
+                        K.FStore.checkingBalanceField : "\(Int.random(in: 1000...30000))",
+                        K.FStore.savingsBalanceField : "\(Int.random(in: 1000...300000))",
+                        K.FStore.creditBalanceField : "\(Int.random(in: 200...2000))"
+                        
+                    ]) { error in
+                        if let err = error {
+                            print("There wa an issue saving data to firestore. \(err)")
+                        } else {
+                            print("Successfully saving data to firestore")
+                        }
+                    }
+                    
+                    
                     //navigate to user's account home page
                     self.performSegue(withIdentifier: "signUpToAccount", sender: self)
                     print("Success creating acount with email: \(email), password: \(password)")

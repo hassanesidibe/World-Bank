@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		455C2F3129FA081E0034A62C /* BankAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455C2F3029FA081E0034A62C /* BankAccount.swift */; };
 		455CF41C29F8A94C0059D990 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CF41B29F8A94C0059D990 /* AppDelegate.swift */; };
 		455CF41E29F8A94C0059D990 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CF41D29F8A94C0059D990 /* SceneDelegate.swift */; };
 		455CF42329F8A94C0059D990 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 455CF42129F8A94C0059D990 /* Main.storyboard */; };
@@ -16,10 +17,12 @@
 		455CF43529F8AF230059D990 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CF43429F8AF230059D990 /* LoginVC.swift */; };
 		455CF43729F8AF390059D990 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CF43629F8AF390059D990 /* SignUpVC.swift */; };
 		455CF43929F8AF650059D990 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CF43829F8AF650059D990 /* HomeVC.swift */; };
+		45669B5529FA3DCE00E0FB37 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45669B5429FA3DCD00E0FB37 /* K.swift */; };
 		BF98FA786DB6C504455E9DCE /* Pods_World_Bank.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57BF55218D5155BBA72758F3 /* Pods_World_Bank.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		455C2F3029FA081E0034A62C /* BankAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAccount.swift; sourceTree = "<group>"; };
 		455CF41829F8A94C0059D990 /* World Bank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "World Bank.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		455CF41B29F8A94C0059D990 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		455CF41D29F8A94C0059D990 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,6 +34,7 @@
 		455CF43429F8AF230059D990 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		455CF43629F8AF390059D990 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		455CF43829F8AF650059D990 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		45669B5429FA3DCD00E0FB37 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		50DF7F6316E0ED37D9AF201C /* Pods-World Bank.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-World Bank.debug.xcconfig"; path = "Target Support Files/Pods-World Bank/Pods-World Bank.debug.xcconfig"; sourceTree = "<group>"; };
 		57BF55218D5155BBA72758F3 /* Pods_World_Bank.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_World_Bank.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		771940D8912C75F69E396F3D /* Pods-World Bank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-World Bank.release.xcconfig"; path = "Target Support Files/Pods-World Bank/Pods-World Bank.release.xcconfig"; sourceTree = "<group>"; };
@@ -71,9 +75,9 @@
 			children = (
 				455CF41B29F8A94C0059D990 /* AppDelegate.swift */,
 				455CF41D29F8A94C0059D990 /* SceneDelegate.swift */,
-				455CF43129F8AAC20059D990 /* Controllers */,
-				455CF43029F8AABA0059D990 /* Views */,
 				455CF42F29F8AAB30059D990 /* Models */,
+				455CF43029F8AABA0059D990 /* Views */,
+				455CF43129F8AAC20059D990 /* Controllers */,
 				455CF42429F8A94D0059D990 /* Assets.xcassets */,
 				455CF42629F8A94D0059D990 /* LaunchScreen.storyboard */,
 				455CF42929F8A94D0059D990 /* Info.plist */,
@@ -85,6 +89,8 @@
 		455CF42F29F8AAB30059D990 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				455C2F3029FA081E0034A62C /* BankAccount.swift */,
+				45669B5429FA3DCD00E0FB37 /* K.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -241,6 +247,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				455CF41C29F8A94C0059D990 /* AppDelegate.swift in Sources */,
+				45669B5529FA3DCE00E0FB37 /* K.swift in Sources */,
+				455C2F3129FA081E0034A62C /* BankAccount.swift in Sources */,
 				455CF43529F8AF230059D990 /* LoginVC.swift in Sources */,
 				455CF43929F8AF650059D990 /* HomeVC.swift in Sources */,
 				455CF43729F8AF390059D990 /* SignUpVC.swift in Sources */,
