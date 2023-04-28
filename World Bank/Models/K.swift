@@ -10,6 +10,8 @@ import Foundation
 struct K {
     static let signUpToAccount = "signUpToAccount"
     static let loginToAccount = "loginToAccount"
+    static let accountToDeposit = "accountToDeposit"
+    static let accountToTransfer = "accountToTransfer"
     
     struct FStore {
         static let collectionName = "bankAccounts"

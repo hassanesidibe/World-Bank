@@ -32,19 +32,21 @@ class SignUpVC: UIViewController {
         //Sign up with Firebase, and navigate to account screen
         
         
-        if let firstName = firstNameTextField.text, let lastName = lastNameTextField.text, let email = emailTextField.text, let password = passwordTextField.text, let passwordConfirmation = passwordConfirmationTextField.text {
+        if let firstName = firstNameTextField.text, let lastName = lastNameTextField.text, let userEmail = emailTextField.text, let password = passwordTextField.text, let passwordConfirmation = passwordConfirmationTextField.text {
 
-            Auth.auth().createUser(withEmail: email, password: password) {result, error in
+            Auth.auth().createUser(withEmail: userEmail, password: password) {result, error in
                 if let err = error {
                     print("Error creating new user's account: \(err)")
                     return
 
                 } else {
                     //Create new bank account and save it to database
-                    //The savings, checking, and credit card balance should be set to zerp
+                    //The savings, checking, and credit card balance should be set to zero
                     
 //                    I STOPPED HERE, I AM ABLE TO SAVE NEW ACCOUNT DATA TO FIRESTORE
                     
+                    
+                    /* Original way of saving user info to firestore
                     self.db.collection(K.FStore.collectionName).addDocument(data: [
                         K.FStore.firstNameField : firstName,
                         K.FStore.lastNameField : lastName,
@@ -60,11 +62,24 @@ class SignUpVC: UIViewController {
                             print("Successfully saving data to firestore")
                         }
                     }
+                    */
+                    
+                    //testing creating new account with user's email as the ID
+                    self.db.collection(K.FStore.collectionName).document(userEmail).setData([
+                        K.FStore.firstNameField : firstName,
+                        K.FStore.lastNameField : lastName,
+                        K.FStore.emailField : userEmail,
+                        K.FStore.checkingBalanceField : "0",
+                        K.FStore.savingsBalanceField : "0",
+                        K.FStore.creditBalanceField : "0"
+                    ])
+                    
+                    
                     
                     
                     //navigate to user's account home page
                     self.performSegue(withIdentifier: "signUpToAccount", sender: self)
-                    print("Success creating acount with email: \(email), password: \(password)")
+                    print("Success creating acount with email: \(userEmail), password: \(password)")
                 }
             }
         }

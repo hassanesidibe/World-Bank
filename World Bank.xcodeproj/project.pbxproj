@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		455AC63629FC55B400BC987C /* DepositVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455AC63529FC55B400BC987C /* DepositVC.swift */; };
+		455AC63829FC640E00BC987C /* TransferVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455AC63729FC640E00BC987C /* TransferVC.swift */; };
 		455C2F3129FA081E0034A62C /* BankAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455C2F3029FA081E0034A62C /* BankAccount.swift */; };
 		455CF41C29F8A94C0059D990 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CF41B29F8A94C0059D990 /* AppDelegate.swift */; };
 		455CF41E29F8A94C0059D990 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455CF41D29F8A94C0059D990 /* SceneDelegate.swift */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		455AC63529FC55B400BC987C /* DepositVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositVC.swift; sourceTree = "<group>"; };
+		455AC63729FC640E00BC987C /* TransferVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferVC.swift; sourceTree = "<group>"; };
 		455C2F3029FA081E0034A62C /* BankAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAccount.swift; sourceTree = "<group>"; };
 		455CF41829F8A94C0059D990 /* World Bank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "World Bank.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		455CF41B29F8A94C0059D990 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +113,8 @@
 				455CF43429F8AF230059D990 /* LoginVC.swift */,
 				455CF43629F8AF390059D990 /* SignUpVC.swift */,
 				455CF43829F8AF650059D990 /* HomeVC.swift */,
+				455AC63529FC55B400BC987C /* DepositVC.swift */,
+				455AC63729FC640E00BC987C /* TransferVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -249,9 +255,11 @@
 				455CF41C29F8A94C0059D990 /* AppDelegate.swift in Sources */,
 				45669B5529FA3DCE00E0FB37 /* K.swift in Sources */,
 				455C2F3129FA081E0034A62C /* BankAccount.swift in Sources */,
+				455AC63629FC55B400BC987C /* DepositVC.swift in Sources */,
 				455CF43529F8AF230059D990 /* LoginVC.swift in Sources */,
 				455CF43929F8AF650059D990 /* HomeVC.swift in Sources */,
 				455CF43729F8AF390059D990 /* SignUpVC.swift in Sources */,
+				455AC63829FC640E00BC987C /* TransferVC.swift in Sources */,
 				455CF41E29F8A94C0059D990 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -17,6 +17,7 @@ import FirebaseFirestore
 class HomeVC: UIViewController {
     
     let db = Firestore.firestore()
+    var currentUserEmail: String?
     
     @IBOutlet weak var greetingLabel: UILabel!
     
@@ -32,6 +33,8 @@ class HomeVC: UIViewController {
     @IBOutlet weak var creditAccountNumberLabel: UILabel!
     @IBOutlet weak var creditBalanceLabel: UILabel!
     
+    var accountToDepositTo: DepositVC.DepositType?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: true)
@@ -42,6 +45,7 @@ class HomeVC: UIViewController {
         if Auth.auth().currentUser != nil {
 //            print("I have access to signed in user in HomeVC")
             if let userEmail = Auth.auth().currentUser!.email {
+                self.currentUserEmail = userEmail
                 //Fetch login user's account info, including checking balance, savings balance, and credit.
                 db.collection(K.FStore.collectionName).whereField(K.FStore.emailField, isEqualTo: userEmail)
                     .getDocuments() { (querySnapshot, err) in
@@ -87,51 +91,62 @@ class HomeVC: UIViewController {
         }
     }
     
-    //MARK: Depostit and tranfer from checking
+    //MARK: Depostit to checking and savings
+    
+//    depositToCheckingPressed() and depositToSavingsPressed are able to segueue to DepositVC
+    
+    
     @IBAction func depositToCheckingPressed(_ sender: UIButton) {
-        print("depositToCheckingPressed, adding $2500 for testing")
+//        print("depositToCheckingPressed, adding $2500 for testing")
         
-        if let unwrappedChekingLabelBalance = checkingBalanceLabel.text {
-//            print("Test1 reachable")
-            
-            let currentCheckingBalance = Float(unwrappedChekingLabelBalance) ?? -10000
+        if let checkingLabelValue = checkingBalanceLabel.text {
+            let currentCheckingBalance = Float(checkingLabelValue) ?? -10000
             print("Current cheking balance is \(currentCheckingBalance)")
             print("After getting blessed from FAFSA with $2,500 new balance is  $\(currentCheckingBalance + 2500)")
             
-//            if let currentCheckingBalance = Float(unwrappedChekingLabelBalance) {
-//                print("Current cheking balance is \(currentCheckingBalance)")
-//                print("After getting blessed from FAFSA with $2,500 new balance is  $\(currentCheckingBalance + 2500)")
-//
-//                print("Test2 reachable")
-//            }
             
-        } else {
-            print("Unable to unwrapped checking balance")
+            accountToDepositTo = .checking
+            performSegue(withIdentifier: K.accountToDeposit, sender: self)
+            
+        }
+    }
+    
+    
+    @IBAction func depositToSavingsPressed(_ sender: UIButton) {
+        print("depositToSavingsPressed")
+        accountToDepositTo = .savings
+        performSegue(withIdentifier: K.accountToDeposit, sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.accountToDeposit {
+            let depositVC = segue.destination as! DepositVC
+            depositVC.accountType = accountToDepositTo
+            depositVC.signedInUserEmail = self.currentUserEmail
         }
         
         
     }
     
+    
+    
+    
+    
+    //MARK: Transfer from cheking and savings
     @IBAction func transferFromCheckingPressed(_ sender: UIButton) {
         print("transferFromCheckingPressed")
     }
     
     
-    
-    
-    
-    //MARK: Deposit and transfer from savings
-    @IBAction func depositToSavingsPressed(_ sender: UIButton) {
-        print("depositToSavingsPressed")
-        
-    }
-    
     @IBAction func transferFromSavingsPressed(_ sender: UIButton) {
         print("transferFromSavingsPressed")
     }
     
-    //MARK: Credit card payment
     
+    
+    
+    
+    //MARK: Credit card payment
     @IBAction func makeCreditCardPaymentPressed(_ sender: UIButton) {
         print("makeCreditCardPaymentPressed")
     }
