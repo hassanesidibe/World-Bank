@@ -16,6 +16,8 @@ class DepositVC: UIViewController {
     
     var signedInUserEmail: String?
     
+    var newAccountBalance = 0.0  //This variable will hold the new value that should be added to user's account
+    
     var accountType: DepositType?
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var amountTextField: UITextField!
@@ -44,16 +46,20 @@ class DepositVC: UIViewController {
                 //I have access to signed in user's account here
                 let userAccountReference = self.db.collection(K.FStore.collectionName).document(userEmail)
                 
-                if accountType == .checking {
-                    userAccountReference.updateData([K.FStore.checkingBalanceField : "\(getAccountBalance(valueToAddToAccount: "100000", .checking))"])
-                    
-                    I WAS WORKING ON THIS
-                    
-                    
-                } else if accountType == .savings {
-                    userAccountReference.updateData([K.FStore.savingsBalanceField : "-99999"])
-                }
                 
+                if let amountString = amountTextField.text {
+                    if let amountDouble = Double(amountString) {
+                        
+                        if accountType == .checking {
+                            depostiToChecking(amount: amountDouble, userEmail: userEmail)
+                            
+                        } else if accountType == .savings {
+                            //Deposit money to savings account
+                            depostiToSavings(amount: amountDouble, userEmail: userEmail)
+                        }
+                        
+                    }
+                }
                 
             }
             
@@ -64,51 +70,52 @@ class DepositVC: UIViewController {
     }
     
     
-    //Adds new value string to checking or savings account
-    func getAccountBalance(valueToAddToAccount: String, _ accountType: DepositType) -> Double {
-        
-        THIS METHOD IS UPDATING THE DEPOSITED AMOUNT ON USER'S ACCOUNT
-        
-        var balanceToReturn = 0.0
-        
-        db.collection(K.FStore.collectionName).whereField(K.FStore.emailField, isEqualTo: signedInUserEmail)
+    func depostiToChecking(amount depositAmount: Double, userEmail: String) {
+        db.collection(K.FStore.collectionName)
+            .whereField(K.FStore.emailField, isEqualTo: signedInUserEmail!)
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
                     
                     if let accountDocument = querySnapshot!.documents.first {
-                        
                         let accountData = accountDocument.data()
+                        let checkingBalanceString = accountData[K.FStore.checkingBalanceField] as! String
                         
-//                        let firstName = accountData[K.FStore.firstNameField]
-//                        let creditCardBalance = accountData[K.FStore.creditBalanceField]
-                        if accountType == .checking {
-                            let checkingBalanceString = accountData[K.FStore.checkingBalanceField] as! String
-                            if let checkingBalanceDouble = Double(checkingBalanceString) {
-                                let valueToDeposit = Double(valueToAddToAccount)!
-                                balanceToReturn = (checkingBalanceDouble + valueToDeposit)
-                            }
+                        if let currentCheckingBalanceDouble = Double(checkingBalanceString) {
+                            let newBalance = (currentCheckingBalanceDouble + depositAmount)
                             
+                            let userAccountReference = self.db.collection(K.FStore.collectionName).document(userEmail)
                             
-                            
-                        } else if accountType == .savings {
-                            
-                            
-                            
-                            let savingsBalanceString = accountData[K.FStore.savingsBalanceField] as! String
+                            userAccountReference.updateData([K.FStore.checkingBalanceField : "\(newBalance)"])
                         }
-                        
-                        
-                        
-                        
                     }
                 }
         }
-        
-        
-        
-        return balanceToReturn
+    }
+    
+    
+    func depostiToSavings(amount depositAmount: Double, userEmail: String) {
+        db.collection(K.FStore.collectionName)
+            .whereField(K.FStore.emailField, isEqualTo: signedInUserEmail!)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    
+                    if let accountDocument = querySnapshot!.documents.first {
+                        let accountData = accountDocument.data()
+                        let savingsBalanceString = accountData[K.FStore.savingsBalanceField] as! String
+                        
+                        if let currentSavingsBalanceDouble = Double(savingsBalanceString) {
+                            let newBalance = (currentSavingsBalanceDouble + depositAmount)
+                            let userAccountReference = self.db.collection(K.FStore.collectionName).document(userEmail)
+                            
+                            userAccountReference.updateData([K.FStore.savingsBalanceField : "\(newBalance)"])
+                        }
+                    }
+                }
+        }
     }
     
     
