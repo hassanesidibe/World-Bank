@@ -45,25 +45,6 @@ class SignUpVC: UIViewController {
                     
 //                    I STOPPED HERE, I AM ABLE TO SAVE NEW ACCOUNT DATA TO FIRESTORE
                     
-                    
-                    /* Original way of saving user info to firestore
-                    self.db.collection(K.FStore.collectionName).addDocument(data: [
-                        K.FStore.firstNameField : firstName,
-                        K.FStore.lastNameField : lastName,
-                        K.FStore.emailField : email,
-                        K.FStore.checkingBalanceField : "\(Int.random(in: 1000...30000))",
-                        K.FStore.savingsBalanceField : "\(Int.random(in: 1000...300000))",
-                        K.FStore.creditBalanceField : "\(Int.random(in: 200...2000))"
-                        
-                    ]) { error in
-                        if let err = error {
-                            print("There wa an issue saving data to firestore. \(err)")
-                        } else {
-                            print("Successfully saving data to firestore")
-                        }
-                    }
-                    */
-                    
                     //testing creating new account with user's email as the ID
                     self.db.collection(K.FStore.collectionName).document(userEmail).setData([
                         K.FStore.firstNameField : firstName,

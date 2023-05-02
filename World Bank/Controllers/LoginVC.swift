@@ -30,7 +30,7 @@ class LoginVC: UIViewController {
                 } else {
                     //success loging user in, segueue to user's account
 //                    print("Success signing in user 🎉🎉")
-                    self.performSegue(withIdentifier: "loginToAccount", sender: self)
+                    self.performSegue(withIdentifier: K.loginScreenToAccount, sender: self)
                 }
             }
         }

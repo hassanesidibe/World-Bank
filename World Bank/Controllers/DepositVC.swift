@@ -9,30 +9,35 @@ import UIKit
 import FirebaseFirestore
 import FirebaseAuth
 
+protocol DepositVCManager {
+    func didFinishDepositingMoneyToAccount(_ depositVC: DepositVC)
+    func failedToDepositMoneyToAccount(_ depositVC: DepositVC, error: Error)
+}
+
 
 class DepositVC: UIViewController {
     
     let db = Firestore.firestore()
-    
+    var banAccount: BankAccount?
     var signedInUserEmail: String?
     
-    var newAccountBalance = 0.0  //This variable will hold the new value that should be added to user's account
+//    HomeVC's prepare for segue method will assign a value to this bank account variable below
+    var bankAccount: BankAccount?
     
-    var accountType: DepositType?
+    var accountType: BankAccountType?
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var amountTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
         if let unwrappedAccountType = accountType {
             switch unwrappedAccountType {
             case .checking:
                 messageLabel.text = "Checking (XXXX)"
             case .savings:
                 messageLabel.text = "Savings (XXXX)"
+            case .credit:
+                messageLabel.text = "Credit card (XXXX)"
             }
         }
     }
@@ -44,20 +49,19 @@ class DepositVC: UIViewController {
             if let userEmail = Auth.auth().currentUser?.email {
                 signedInUserEmail = userEmail
                 //I have access to signed in user's account here
-                let userAccountReference = self.db.collection(K.FStore.collectionName).document(userEmail)
-                
-                
                 if let amountString = amountTextField.text {
-                    if let amountDouble = Double(amountString) {
+                    if let amount = Double(amountString) {
                         
-                        if accountType == .checking {
-                            depostiToChecking(amount: amountDouble, userEmail: userEmail)
+                        if let unwrappedBankAccount = self.bankAccount {
+                            if accountType == .checking {
+                                unwrappedBankAccount.deposit(amount, to: .checking)
+                                
+                            } else if accountType == .savings {
+                                unwrappedBankAccount.deposit(amount, to: .savings)
+                            }
                             
-                        } else if accountType == .savings {
-                            //Deposit money to savings account
-                            depostiToSavings(amount: amountDouble, userEmail: userEmail)
+                            self.dismiss(animated: true, completion: nil)
                         }
-                        
                     }
                 }
                 
@@ -70,64 +74,5 @@ class DepositVC: UIViewController {
     }
     
     
-    func depostiToChecking(amount depositAmount: Double, userEmail: String) {
-        db.collection(K.FStore.collectionName)
-            .whereField(K.FStore.emailField, isEqualTo: signedInUserEmail!)
-            .getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                } else {
-                    
-                    if let accountDocument = querySnapshot!.documents.first {
-                        let accountData = accountDocument.data()
-                        let checkingBalanceString = accountData[K.FStore.checkingBalanceField] as! String
-                        
-                        if let currentCheckingBalanceDouble = Double(checkingBalanceString) {
-                            let newBalance = (currentCheckingBalanceDouble + depositAmount)
-                            
-                            let userAccountReference = self.db.collection(K.FStore.collectionName).document(userEmail)
-                            
-                            userAccountReference.updateData([K.FStore.checkingBalanceField : "\(newBalance)"])
-                        }
-                    }
-                }
-        }
-    }
-    
-    
-    func depostiToSavings(amount depositAmount: Double, userEmail: String) {
-        db.collection(K.FStore.collectionName)
-            .whereField(K.FStore.emailField, isEqualTo: signedInUserEmail!)
-            .getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                } else {
-                    
-                    if let accountDocument = querySnapshot!.documents.first {
-                        let accountData = accountDocument.data()
-                        let savingsBalanceString = accountData[K.FStore.savingsBalanceField] as! String
-                        
-                        if let currentSavingsBalanceDouble = Double(savingsBalanceString) {
-                            let newBalance = (currentSavingsBalanceDouble + depositAmount)
-                            let userAccountReference = self.db.collection(K.FStore.collectionName).document(userEmail)
-                            
-                            userAccountReference.updateData([K.FStore.savingsBalanceField : "\(newBalance)"])
-                        }
-                    }
-                }
-        }
-    }
-    
-    
-    
 }
 
-
-
-
-
-extension DepositVC {
-    enum DepositType {
-        case checking, savings
-    }
-}
