@@ -46,13 +46,13 @@ class SignUpVC: UIViewController {
 //                    I STOPPED HERE, I AM ABLE TO SAVE NEW ACCOUNT DATA TO FIRESTORE
                     
                     //testing creating new account with user's email as the ID
-                    self.db.collection(K.FStore.collectionName).document(userEmail).setData([
-                        K.FStore.firstNameField : firstName,
-                        K.FStore.lastNameField : lastName,
-                        K.FStore.emailField : userEmail,
-                        K.FStore.checkingBalanceField : "0",
-                        K.FStore.savingsBalanceField : "0",
-                        K.FStore.creditBalanceField : "0"
+                    self.db.collection(K.FStore.BankAccount.collectionName).document(userEmail).setData([
+                        K.FStore.BankAccount.firstNameField : firstName,
+                        K.FStore.BankAccount.lastNameField : lastName,
+                        K.FStore.BankAccount.emailField : userEmail,
+                        K.FStore.BankAccount.checkingBalanceField : "0",
+                        K.FStore.BankAccount.savingsBalanceField : "0",
+                        K.FStore.BankAccount.creditBalanceField : "0"
                     ])
                     
                     

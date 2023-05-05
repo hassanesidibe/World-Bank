@@ -14,12 +14,21 @@ struct K {
     static let accountScreenToTransfer = "accountToTransfer"
     
     struct FStore {
-        static let collectionName = "bankAccounts"
-        static let firstNameField = "firstName"
-        static let lastNameField = "lastName"
-        static let emailField = "email"
-        static let checkingBalanceField = "checking"
-        static let savingsBalanceField = "savings"
-        static let creditBalanceField = "credit"
+        struct BankAccount {
+            static let collectionName = "bankAccounts"
+            static let firstNameField = "firstName"
+            static let lastNameField = "lastName"
+            static let emailField = "email"
+            static let checkingBalanceField = "checking"
+            static let savingsBalanceField = "savings"
+            static let creditBalanceField = "credit"
+        }
+        
+        struct TransferNotification {
+            static let collectionName = "TransferNotifications"
+            static let senderNameField = "senderName"
+            static let senderEmailField = "senderEmail"
+            static let amountField = "amountTransfered"
+        }
     }
 }

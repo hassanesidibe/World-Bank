@@ -8,22 +8,46 @@
 import UIKit
 
 class TransferVC: UIViewController {
-
+    
+    
+    @IBOutlet weak var recipientEmailTextField: UITextField!
+    @IBOutlet weak var amountTextField: UITextField!
+    @IBOutlet weak var accountPicker: UISegmentedControl!
+    var bankAccount: BankAccountManager?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    
+    
+    @IBAction func sendButtonPressed(_ sender: UIButton) {
+        //Send money to account with the email provided in the email field
+        
+        if let unwrappedBankAccount = self.bankAccount,
+           let recipientEmail = recipientEmailTextField.text,
+           let amount = Double(amountTextField.text!) {
+            
+            if getChosenAccount() == .checking {
+                //transfer from checking account
+                unwrappedBankAccount.transferFromChecking(to: recipientEmail, amount: amount)
+                
+            } else if getChosenAccount() == .savings {
+                //transfer from savings account\
+                unwrappedBankAccount.transferFromSavings(to: recipientEmail, transferAmount: amount)
+            }
+            
+        }
     }
-    */
-
+    
+    
+    func getChosenAccount() -> BankAccountType {
+        if accountPicker.selectedSegmentIndex == 0 {
+            return .checking
+        } else {
+            return .savings
+        }
+    }
+    
 }

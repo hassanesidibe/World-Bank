@@ -18,11 +18,11 @@ protocol DepositVCManager {
 class DepositVC: UIViewController {
     
     let db = Firestore.firestore()
-    var banAccount: BankAccount?
+    var banAccount: BankAccountManager?
     var signedInUserEmail: String?
     
 //    HomeVC's prepare for segue method will assign a value to this bank account variable below
-    var bankAccount: BankAccount?
+    var bankAccount: BankAccountManager?
     
     var accountType: BankAccountType?
     @IBOutlet weak var messageLabel: UILabel!

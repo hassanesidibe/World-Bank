@@ -14,12 +14,14 @@ import FirebaseAuth
 import FirebaseFirestore
 
 
-//I WAS WORKING ON THIS NEW IMPLEMENTATION OF HomeVC, I COMMENTED THE OLD VERSION AT THE BOTTOM
+//THIS VIEW SHOULD FETCH TRANSFER NOTIFICATION, ANYTIME IT APPEARS
 
 class HomeVC: UIViewController {
     
     let db = Firestore.firestore()
-    var bankAccount: BankAccount?   //This is my Model
+    var bankAccount: BankAccountManager?   //This is my Model
+    
+    typealias bankAccountConstants = K.FStore.BankAccount
     
     @IBOutlet weak var greetingLabel: UILabel!
     //checking account outlets
@@ -42,7 +44,7 @@ class HomeVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         if let unwrappedEmail = self.getSignedInUserEmail() {
-            self.bankAccount = BankAccount(userEmail: unwrappedEmail)
+            self.bankAccount = BankAccountManager(userEmail: unwrappedEmail)
             self.bankAccount?.delegate = self
             bankAccount?.fetchBalance(for: .checking)
             bankAccount?.fetchBalance(for: .savings)
@@ -132,37 +134,45 @@ class HomeVC: UIViewController {
 
 //MARK: - BankAccount delegate inplementation
 extension HomeVC: BankAccountDelegate {
-    func didFinishFetching_chekingAccountBalance(_ bankAccount: BankAccount, balance: Double) {
+    func didFinishFetching_chekingAccountBalance(_ bankAccount: BankAccountManager, balance: Double) {
         DispatchQueue.main.async {
             print("Success caling didFinishFetching_chekingAccountBalance() in HomeVC")
             self.checkingBalanceLabel.text = "\(balance)"
         }
     }
     
-    func didFinishFetching_savingsAccountBalance(_ bankAccount: BankAccount, balance: Double) {
+    func didFinishFetching_savingsAccountBalance(_ bankAccount: BankAccountManager, balance: Double) {
         print("Success caling didFinishFetching_savingsAccountBalance() in HomeVC")
         self.savingsBalanceLabel.text = "\(balance)"
     }
     
-    func didFinishFetching_creditCardAccountBalance(_ bankAccount: BankAccount, balance: Double) {
+    func didFinishFetching_creditCardAccountBalance(_ bankAccount: BankAccountManager, balance: Double) {
         print("Success caling didFinishFetching_creditCardAccountBalance() in HomeVC")
         self.creditBalanceLabel.text = "\(balance)"
     }
     
-    func didFinishDepositingMoneyTo_checkingAccount(_ bankAccount: BankAccount) {
+    func didFinishDepositingMoneyTo_checkingAccount(_ bankAccount: BankAccountManager) {
         print("Hello from didFinishDepositingMoneyTo_checkingAccount()")
         self.bankAccount?.fetchBalance(for: .checking)
     }
     
-    func didFinishDepositingMoneyTo_savingsAccount(_ bankAccount: BankAccount) {
+    func didFinishDepositingMoneyTo_savingsAccount(_ bankAccount: BankAccountManager) {
         print("Hello from didFinishDepositingMoneyTo_savingsAccount()")
         self.bankAccount?.fetchBalance(for: .savings)
     }
     
-    func didFinishMakingCreditCardPayment(_ bankAccount: BankAccount) {
+    func didFinishMakingCreditCardPayment(_ bankAccount: BankAccountManager) {
         print("Hello from didFinishMakingCreditCardPayment()")
     }
     
+    
+    func didFinishTransferringMoney_fromChecking(_ bankAccountManager: BankAccountManager) {
+        print("Hello from didFinishTransferringMoney_fromChecking()")
+    }
+    
+    func didFinishTransferringMoney_fromSavings(_ bankAccountManager: BankAccountManager) {
+        print("Hello from didFinishTransferringMoney_fromSavings")
+    }
     
 }
 
@@ -219,7 +229,7 @@ extension HomeVC {
             if let userEmail = Auth.auth().currentUser!.email {
 //                self.currentUserEmail = userEmail
                 //Fetch login user's account info, including checking balance, savings balance, and credit.
-                db.collection(K.FStore.collectionName).whereField(K.FStore.emailField, isEqualTo: userEmail)
+                db.collection(bankAccountConstants.collectionName).whereField(bankAccountConstants.emailField, isEqualTo: userEmail)
                     .getDocuments() { (querySnapshot, err) in
                         if let err = err {
                             print("Error getting documents: \(err)")
@@ -229,10 +239,10 @@ extension HomeVC {
 //                                print("\(accountDocument.documentID) => \(accountDocument.data())")
                                 let accountData = accountDocument.data()
                                 
-                                let firstName = accountData[K.FStore.firstNameField]
-                                let checkingBalance = accountData[K.FStore.checkingBalanceField]
-                                let savingsBalance = accountData[K.FStore.savingsBalanceField]
-                                let creditCardBalance = accountData[K.FStore.creditBalanceField]
+                                let firstName = accountData[bankAccountConstants.firstNameField]
+                                let checkingBalance = accountData[bankAccountConstants.checkingBalanceField]
+                                let savingsBalance = accountData[bankAccountConstants.savingsBalanceField]
+                                let creditCardBalance = accountData[bankAccountConstants.creditBalanceField]
                                 
                                 //Updating account info UI's
                                 self.greetingLabel.text = "Good evening, \(firstName as! String)"
