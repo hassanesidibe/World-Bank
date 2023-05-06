@@ -23,8 +23,8 @@ protocol BankAccountDelegate {
     func didFinishDepositingMoneyTo_savingsAccount(_ bankAccountManager: BankAccountManager)
     func didFinishMakingCreditCardPayment(_ bankAccountManager: BankAccountManager)
     
-    func didFinishTransferringMoney_fromChecking(_ bankAccountManager: BankAccountManager)
-    func didFinishTransferringMoney_fromSavings(_ bankAccountManager: BankAccountManager)
+    func didFinishTransferringMoney_fromChecking(_ bankAccountManager: BankAccountManager, transferAmount: Double)
+    func didFinishTransferringMoney_fromSavings(_ bankAccountManager: BankAccountManager, transferAmount: Double)
 }
 
 

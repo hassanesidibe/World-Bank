@@ -12,8 +12,9 @@ class TransferVC: UIViewController {
     
     @IBOutlet weak var recipientEmailTextField: UITextField!
     @IBOutlet weak var amountTextField: UITextField!
-    @IBOutlet weak var accountPicker: UISegmentedControl!
+//    @IBOutlet weak var accountPicker: UISegmentedControl!
     var bankAccount: BankAccountManager?
+    var transferType: BankAccountType?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,28 +26,27 @@ class TransferVC: UIViewController {
     @IBAction func sendButtonPressed(_ sender: UIButton) {
         //Send money to account with the email provided in the email field
         
+        print("Test 0")
+        
         if let unwrappedBankAccount = self.bankAccount,
            let recipientEmail = recipientEmailTextField.text,
            let amount = Double(amountTextField.text!) {
             
-            if getChosenAccount() == .checking {
-                //transfer from checking account
-                unwrappedBankAccount.transferFromChecking(to: recipientEmail, amount: amount)
-                
-            } else if getChosenAccount() == .savings {
-                //transfer from savings account\
-                unwrappedBankAccount.transferFromSavings(to: recipientEmail, transferAmount: amount)
+            if let unwrappedTransferType = self.transferType {
+                if unwrappedTransferType == .checking {
+                    
+                    unwrappedBankAccount.transferFromChecking(to: recipientEmail, amount: amount)
+                    
+                    print("Test 1")
+                    
+                } else if unwrappedTransferType == .savings {
+                    unwrappedBankAccount.transferFromSavings(to: recipientEmail, transferAmount: amount)
+                    print("Test 2")
+                }
             }
             
-        }
-    }
-    
-    
-    func getChosenAccount() -> BankAccountType {
-        if accountPicker.selectedSegmentIndex == 0 {
-            return .checking
         } else {
-            return .savings
+            print("Error unwrapping values in TransferVC.sendButtonPressed()")
         }
     }
     

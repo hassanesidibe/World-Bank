@@ -20,6 +20,7 @@ class HomeVC: UIViewController {
     
     let db = Firestore.firestore()
     var bankAccount: BankAccountManager?   //This is my Model
+    var tranferType: BankAccountType? //Will store the type of account user will make transfer from
     
     typealias bankAccountConstants = K.FStore.BankAccount
     
@@ -59,8 +60,6 @@ class HomeVC: UIViewController {
     
     //MARK: Depostit and payment
     @IBAction func depositToCheckingPressed(_ sender: UIButton) {
-//        print("depositToCheckingPressed() ")
-        
         accountToDepositTo = .checking
         performSegue(withIdentifier: K.accountScreenToDeposit, sender: self)
         
@@ -68,38 +67,66 @@ class HomeVC: UIViewController {
     
     
     @IBAction func depositToSavingsPressed(_ sender: UIButton) {
-//        print("depositToSavingsPressed()")
         accountToDepositTo = .savings
         performSegue(withIdentifier: K.accountScreenToDeposit, sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == K.accountScreenToDeposit {
-            let depositVC = segue.destination as! DepositVC
-            if let unwrappedBankAccount = self.bankAccount {
-                depositVC.bankAccount = self.bankAccount
-                depositVC.accountType = accountToDepositTo
-                
-            } else {
-                print("Error unwrapping bank account in HomeVC.prepare(for segue)")
-            }
+        
+        if self.bankAccount != nil {
+            
+                if segue.identifier == K.accountScreenToDeposit {
+                    let depositVC = segue.destination as! DepositVC
+                    depositVC.bankAccount = self.bankAccount
+                    depositVC.accountType = accountToDepositTo
+                    
+                } else if segue.identifier == K.accountScreenToTransfer {
+                    
+                    let transferVC = segue.destination as! TransferVC
+                    transferVC.bankAccount = self.bankAccount
+                    if tranferType == .checking {
+                        transferVC.transferType = .checking
+                    } else if tranferType == .savings {
+                        transferVC.transferType = .savings
+                    }
+                }
+             
+        }  else {
+            print("Error unwrapping bank account in HomeVC.prepare(for segue)")
         }
-        
-        
     }
     
     
+
     
     
     
     //MARK: Transfer from cheking and savings
     @IBAction func transferFromCheckingPressed(_ sender: UIButton) {
-        print("transferFromCheckingPressed")
+        
+        if let balanceString = checkingBalanceLabel.text {
+            if let currentCheckingBalance = Double(balanceString) {
+                
+                if thereIsEnoughMoneyInAccountForTransfer(currentCheckingBalance) {
+                    self.tranferType = .checking
+                    self.performSegue(withIdentifier: K.accountScreenToTransfer, sender: self)
+                }
+            }
+        }
     }
     
     
     @IBAction func transferFromSavingsPressed(_ sender: UIButton) {
         print("transferFromSavingsPressed")
+        if let balanceString = savingsBalanceLabel.text {
+            if let currentSavingsBalance = Double(balanceString) {
+                
+                if thereIsEnoughMoneyInAccountForTransfer(currentSavingsBalance) {
+                    self.tranferType = .savings
+                    self.performSegue(withIdentifier: K.accountScreenToTransfer, sender: self)
+                }
+            }
+        }
     }
     
     
@@ -166,12 +193,21 @@ extension HomeVC: BankAccountDelegate {
     }
     
     
-    func didFinishTransferringMoney_fromChecking(_ bankAccountManager: BankAccountManager) {
+    func didFinishTransferringMoney_fromChecking(_ bankAccountManager: BankAccountManager, transferAmount: Double) {
         print("Hello from didFinishTransferringMoney_fromChecking()")
+        
+//        SUBTRACT tranferAmount from, the checking account money was tranfered from. In this case that is the login user in HomeVC
+        
+        
+        self.bankAccount?.subtractFromChecking(transferAmount: transferAmount)
     }
     
-    func didFinishTransferringMoney_fromSavings(_ bankAccountManager: BankAccountManager) {
+    func didFinishTransferringMoney_fromSavings(_ bankAccountManager: BankAccountManager, transferAmount: Double) {
         print("Hello from didFinishTransferringMoney_fromSavings")
+        
+//        SUBTRACT tranferAmount from, the savings account money was tranfered from. In this case that is the login user in HomeVC
+        
+        self.bankAccount?.subtractFromSavings(transferAmount: transferAmount)
     }
     
 }
@@ -199,6 +235,18 @@ extension HomeVC {
             return false
         }
     }
+    
+    
+    func thereIsEnoughMoneyInAccountForTransfer(_ transferAmount: Double) -> Bool {
+        //There must be a minimum of $10 in the account in order to perform a transfer
+        if transferAmount < 10 {
+            print("Error in HomeVC.currentAccountBalanceIsGreaterThanTransferAmount(): Unable to transfer money, low checking balance $\(transferAmount)")
+            return false
+        } else {
+            return true
+        }
+    }
+    
     
     func getSignedInUserEmail() -> String? {
         if Auth.auth().currentUser != nil {

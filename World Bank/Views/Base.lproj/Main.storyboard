@@ -176,7 +176,7 @@
                                             <constraint firstAttribute="height" constant="1" id="7Hu-v1-JOM"/>
                                         </constraints>
                                     </view>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bFB-RQ-ulJ">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Test123!@#" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bFB-RQ-ulJ">
                                         <rect key="frame" x="0.0" y="105" width="293" height="34"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -190,7 +190,7 @@
                                             <constraint firstAttribute="height" constant="1" id="lRp-vU-p42"/>
                                         </constraints>
                                     </view>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G9U-Lt-VJw">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Test123!@#" borderStyle="roundedRect" placeholder="Confirm password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G9U-Lt-VJw">
                                         <rect key="frame" x="0.0" y="140" width="293" height="34"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -696,7 +696,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="U62-oG-PfY"/>
                     <connections>
-                        <outlet property="accountPicker" destination="RwR-8Q-7ce" id="uRN-Ao-lnU"/>
                         <outlet property="amountTextField" destination="RcD-aW-cYe" id="5JP-bG-9F2"/>
                         <outlet property="recipientEmailTextField" destination="l5H-uR-54Z" id="GXJ-Ew-ihw"/>
                     </connections>
@@ -806,7 +805,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="20M-0H-x2c"/>
+        <segue reference="sRp-rG-6G2"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="sanDiego1" width="1242" height="2208"/>
