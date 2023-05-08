@@ -50,9 +50,9 @@ class SignUpVC: UIViewController {
                         K.FStore.BankAccount.firstNameField : firstName,
                         K.FStore.BankAccount.lastNameField : lastName,
                         K.FStore.BankAccount.emailField : userEmail,
-                        K.FStore.BankAccount.checkingBalanceField : "0",
-                        K.FStore.BankAccount.savingsBalanceField : "0",
-                        K.FStore.BankAccount.creditBalanceField : "0"
+                        K.FStore.BankAccount.checkingBalanceField : "\(self.getRandomBalance())",
+                        K.FStore.BankAccount.savingsBalanceField : "\(self.getRandomBalance())",
+                        K.FStore.BankAccount.creditBalanceField : "\(self.getRandomBalance())"
                     ])
                     
                     
@@ -69,4 +69,7 @@ class SignUpVC: UIViewController {
         
     }
 
+    func getRandomBalance() -> Int {
+        return Int.random(in: 200...20000)
+    }
 }

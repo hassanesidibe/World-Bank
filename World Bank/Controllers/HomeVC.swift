@@ -160,7 +160,7 @@ class HomeVC: UIViewController {
 
 
 //MARK: - BankAccount delegate inplementation
-extension HomeVC: BankAccountDelegate {
+extension HomeVC: BankAccountManagerDelegate {
     func didFinishFetching_chekingAccountBalance(_ bankAccount: BankAccountManager, balance: Double) {
         DispatchQueue.main.async {
             print("Success caling didFinishFetching_chekingAccountBalance() in HomeVC")

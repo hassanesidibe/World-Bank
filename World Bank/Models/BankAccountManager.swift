@@ -14,18 +14,7 @@ enum BankAccountType {
     case checking, savings, credit
 }
 
-protocol BankAccountDelegate {
-    func didFinishFetching_chekingAccountBalance(_ bankAccountManager: BankAccountManager, balance: Double)
-    func didFinishFetching_savingsAccountBalance(_ bankAccountManager: BankAccountManager, balance: Double)
-    func didFinishFetching_creditCardAccountBalance(_ bankAccountManager: BankAccountManager, balance: Double)
-    
-    func didFinishDepositingMoneyTo_checkingAccount(_ bankAccountManager: BankAccountManager)
-    func didFinishDepositingMoneyTo_savingsAccount(_ bankAccountManager: BankAccountManager)
-    func didFinishMakingCreditCardPayment(_ bankAccountManager: BankAccountManager)
-    
-    func didFinishTransferringMoney_fromChecking(_ bankAccountManager: BankAccountManager, transferAmount: Double)
-    func didFinishTransferringMoney_fromSavings(_ bankAccountManager: BankAccountManager, transferAmount: Double)
-}
+
 
 
 class BankAccountManager {
@@ -34,69 +23,28 @@ class BankAccountManager {
     let db = Firestore.firestore()
     typealias bankAccountConstants = K.FStore.BankAccount
     
-    var delegate: BankAccountDelegate?
-    
-    
+    var delegate: BankAccountManagerDelegate?
     
     init(userEmail: String) {
         self.userEmail = userEmail
     }
     
-    func deposit(_ depositAmount: Double, to accountType: BankAccountType) {
-        db.collection(K.FStore.BankAccount.collectionName)
-            .whereField(K.FStore.BankAccount.emailField, isEqualTo: self.userEmail)
-            .getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                } else {
-                    
-                    if let accountDocument = querySnapshot!.documents.first {
-                        let accountData = accountDocument.data()
-                        let userAccountReference = self.db.collection(K.FStore.BankAccount.collectionName).document(self.userEmail)
-                        
-                        switch accountType {
-                        case .checking:
-                            //Add money to checking account
-                            print("Depositing \(depositAmount) to checking")
-                            let checkingBalanceString = accountData[K.FStore.BankAccount.checkingBalanceField] as! String
-                            if let currentCheckingBalanceDouble = Double(checkingBalanceString) {
-                                let newBalance = (currentCheckingBalanceDouble + depositAmount)
-                                userAccountReference.updateData([K.FStore.BankAccount.checkingBalanceField : "\(newBalance)"])
-                                self.delegate?.didFinishDepositingMoneyTo_checkingAccount(self)
-                            }
-                            
-                        case .savings:
-                            //Add money to savings account
-                            print("Depositing \(depositAmount) to savings")
-                            let savingsBalanceString = accountData[K.FStore.BankAccount.savingsBalanceField] as! String
-                            if let currentSavingsBalanceDouble = Double(savingsBalanceString) {
-                                let newBalance = (currentSavingsBalanceDouble + depositAmount)
-                                userAccountReference.updateData([K.FStore.BankAccount.savingsBalanceField : "\(newBalance)"])
-                                self.delegate?.didFinishDepositingMoneyTo_savingsAccount(self)
-                            }
-                            
-                        case .credit:
-                            //Make credit card payment
-                            print("Making \(depositAmount) payment to credit card")
-                            print("Warning: BankAccount.deposit() has not been inplemented for case: .credi")
-                            self.delegate?.didFinishMakingCreditCardPayment(self)
-                            
-                        }
-                    }
-                }
-            }
-    }
-
     
-    
-    
-    
-    func makeCreditCardPayment(amount: String) {
-        
-        
-        
+    //MARK: Helper functions
+    func isValidAmount(_ amount: Double) -> Bool {
+        if amount < 10 || amount > 10000 {
+            return false
+        }
+        return true
     }
     
+    func recipientEmailIsDifferentFromSenderEmail(_ recipientEmail: String) -> Bool {
+        if self.userEmail == recipientEmail {
+            return false
+        } else {
+            return true
+        }
+    }
 }
 
 
@@ -118,12 +66,9 @@ extension BankAccountManager {
                     if let accountDocument = querySnapshot!.documents.first {
                         let accountDataDictionary = accountDocument.data()
                         
-                        
                         switch accountType {
                         case .checking:
                             balanceString =  accountDataDictionary[K.FStore.BankAccount.checkingBalanceField] as? String
-                            
-                            
                         case .savings:
                             balanceString = accountDataDictionary[K.FStore.BankAccount.savingsBalanceField] as? String
                         case .credit:
@@ -147,11 +92,7 @@ extension BankAccountManager {
                                 }
                                 
                             }
-                            
-                            
                         }
-                        
-                        
                     }
                 }
         }

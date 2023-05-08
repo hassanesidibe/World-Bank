@@ -26,22 +26,22 @@ class TransferVC: UIViewController {
     @IBAction func sendButtonPressed(_ sender: UIButton) {
         //Send money to account with the email provided in the email field
         
-        print("Test 0")
-        
         if let unwrappedBankAccount = self.bankAccount,
            let recipientEmail = recipientEmailTextField.text,
            let amount = Double(amountTextField.text!) {
             
             if let unwrappedTransferType = self.transferType {
-                if unwrappedTransferType == .checking {
-                    
+                
+                switch unwrappedTransferType {
+                case .checking:
                     unwrappedBankAccount.transferFromChecking(to: recipientEmail, amount: amount)
-                    
-                    print("Test 1")
-                    
-                } else if unwrappedTransferType == .savings {
+                case .savings:
                     unwrappedBankAccount.transferFromSavings(to: recipientEmail, transferAmount: amount)
-                    print("Test 2")
+                case .credit:
+                    print("Make credit card payment in TransferVC.sendButtonPressed()")
+                    unwrappedBankAccount.makeCreditCardPayment(paymentAmount: amount)
+                    
+                    
                 }
             }
             
