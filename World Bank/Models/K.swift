@@ -12,6 +12,7 @@ struct K {
     static let loginScreenToAccount = "loginToAccount"
     static let accountScreenToDeposit = "accountToDeposit"
     static let accountScreenToTransfer = "accountToTransfer"
+    static let accountScreenToCreditCardPayment = "accountToCreditCardPayment"
     
     struct FStore {
         struct BankAccount {

@@ -81,7 +81,6 @@ class HomeVC: UIViewController {
                     depositVC.accountType = accountToDepositTo
                     
                 } else if segue.identifier == K.accountScreenToTransfer {
-                    
                     let transferVC = segue.destination as! TransferVC
                     transferVC.bankAccount = self.bankAccount
                     if tranferType == .checking {
@@ -89,6 +88,14 @@ class HomeVC: UIViewController {
                     } else if tranferType == .savings {
                         transferVC.transferType = .savings
                     }
+                    
+                } else if segue.identifier == K.accountScreenToCreditCardPayment {
+                    if let creditBalance = Double(creditBalanceLabel.text!) {
+                        let creditPaymentVC = segue.destination as! CreditCardPaymentVC
+                        creditPaymentVC.bankAccount = self.bankAccount
+                        creditPaymentVC.statementBalance = creditBalance
+                    }
+                    
                 }
              
         }  else {
@@ -117,7 +124,7 @@ class HomeVC: UIViewController {
     
     
     @IBAction func transferFromSavingsPressed(_ sender: UIButton) {
-        print("transferFromSavingsPressed")
+//        print("transferFromSavingsPressed")
         if let balanceString = savingsBalanceLabel.text {
             if let currentSavingsBalance = Double(balanceString) {
                 
@@ -135,7 +142,8 @@ class HomeVC: UIViewController {
     
     //MARK: Credit card payment
     @IBAction func makeCreditCardPaymentPressed(_ sender: UIButton) {
-        print("makeCreditCardPaymentPressed")
+//        print("makeCreditCardPaymentPressed")
+        self.performSegue(withIdentifier: K.accountScreenToCreditCardPayment, sender: self)
     }
     
 
@@ -215,16 +223,6 @@ extension HomeVC: BankAccountManagerDelegate {
 
 
 
-
-
-
-
-
-
-
-
-
-
 //MARK: - Extensions and utilities
 extension HomeVC {
     
@@ -265,12 +263,6 @@ extension HomeVC {
     }
     
     func fetchAccountDataAndUpdateUI() {
-        
-//        if let userEmail = getCurrentUserEmail() {
-//            self.currentUserEmail = userEmail
-//        }
-        
-        
         
         if Auth.auth().currentUser != nil {
             print("I have access to signed in user in HomeVC")
