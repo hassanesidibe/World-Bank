@@ -37,7 +37,7 @@ extension BankAccountManager {
                                 userAccountReference.updateData([K.FStore.BankAccount.creditBalanceField : "\(newCreditCardBalance)"])
                                 userAccountReference.updateData([K.FStore.BankAccount.checkingBalanceField : "\(newCheckingAccountBalance)"])
                                 
-                                self.delegate?.didFinishMakingCreditCardPayment(self)
+                                self.delegate?.didFinishMakingCreditCardPayment(self, from: .checking)
                                 
                                 
                             } else {
@@ -78,7 +78,7 @@ extension BankAccountManager {
                                 userAccountReference.updateData([K.FStore.BankAccount.creditBalanceField : "\(newCreditCardBalance)"])
                                 userAccountReference.updateData([K.FStore.BankAccount.savingsBalanceField : "\(newSavingsAccountBalance)"])
                                 
-                                self.delegate?.didFinishMakingCreditCardPayment(self)
+                                self.delegate?.didFinishMakingCreditCardPayment(self, from: .savings)
                                 
                                 
                             } else {

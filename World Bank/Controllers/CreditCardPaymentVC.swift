@@ -16,11 +16,16 @@ class CreditCardPaymentVC: UIViewController {
     @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var accountTypeSegmentedControl: UISegmentedControl!
     
+    //These values will be set by HomeVC in prepare(for segue:)
+    var checkingBalance: Double?
+    var savingsBalance: Double?
+    
     
     @IBOutlet weak var payOtherAmountStackView: UIStackView!
     @IBOutlet weak var payStatementBalanceButtonButtonBackground: UIView!
+    @IBOutlet weak var amountTextField: UITextField!
     
-//    I will use this imageview to show and hide the check mark
+    //    I will use this imageview to show and hide the check mark
     @IBOutlet weak var checkMarkImageView: UIImageView!
     var soundPlayer: AVAudioPlayer?
     
@@ -35,15 +40,18 @@ class CreditCardPaymentVC: UIViewController {
     
     
     @IBAction func payStatementBalanceButtonPressed(_ sender: UIButton) {
-        print("payStatementBalanceButtonPressed()")
+//        print("payStatementBalanceButtonPressed()")
 //        I WAS WORKING ON THIS
         if let unwrappedBankAccount = self.bankAccount,
            let unwrappedStatementBalance = self.statementBalance {
+            
+//            print("SATEMENT BALANCE BEFORE PAYMENT: \(unwrappedStatementBalance)")
             
             //Hide pay other amount textfield and pay button
             payOtherAmountStackView.alpha = 0
             
 //            I WAS WORKING ON THIS AND CREDIT CARD PAYMENT FILE
+//            I am able to play sound now
             
             let accountIndex = accountTypeSegmentedControl.selectedSegmentIndex
             
@@ -66,12 +74,25 @@ class CreditCardPaymentVC: UIViewController {
     }
     
     @IBAction func payButtonPressed(_ sender: UIButton) {
-//        print("payButtonPressed()")
-//        I WAS WORKING ON THIS
-        
-        if let unwrappedBankAccount = self.bankAccount {
-            //Hide pay statement balance button
-            payStatementBalanceButtonButtonBackground.alpha = 0
+        if self.bankAccount != nil,
+           let amountString = amountTextField.text {
+            
+            if let amountDouble = Double(amountString) {
+                //Make sure there is enough money in checking account, or savings before processing the credit card payment
+                
+                
+//                I NOW HAVE ACCESS TO checkingBalance AND  savingsBalance WHICH WILL BE SET BY HomeVC
+                
+                
+                
+                
+                //Hide pay statement balance button
+                payStatementBalanceButtonButtonBackground.alpha = 0
+            }
+            
+            
+            
+            
             
         }
     }

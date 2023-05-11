@@ -739,6 +739,7 @@
                     <navigationItem key="navigationItem" id="UaL-nR-Pg5"/>
                     <connections>
                         <outlet property="accountTypeSegmentedControl" destination="yxo-gc-x3P" id="1Ys-jV-yvW"/>
+                        <outlet property="amountTextField" destination="ZuL-H4-Wbz" id="Q8i-Tw-CuE"/>
                         <outlet property="balanceLabel" destination="oEj-Ey-ZCv" id="1gZ-iz-C0Z"/>
                         <outlet property="checkMarkImageView" destination="PLz-pg-2t6" id="g4L-1P-gVl"/>
                         <outlet property="payOtherAmountStackView" destination="DDf-Pr-NnN" id="er7-1c-VLa"/>

@@ -19,7 +19,7 @@ import FirebaseFirestore
 class HomeVC: UIViewController {
     
     let db = Firestore.firestore()
-    var bankAccount: BankAccountManager?   //This is my Model
+    var bankAccountManager: BankAccountManager?   //This is my Model
     var tranferType: BankAccountType? //Will store the type of account user will make transfer from
     
     typealias bankAccountConstants = K.FStore.BankAccount
@@ -45,11 +45,12 @@ class HomeVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         if let unwrappedEmail = self.getSignedInUserEmail() {
-            self.bankAccount = BankAccountManager(userEmail: unwrappedEmail)
-            self.bankAccount?.delegate = self
-            bankAccount?.fetchBalance(for: .checking)
-            bankAccount?.fetchBalance(for: .savings)
-            bankAccount?.fetchBalance(for: .credit)
+            self.bankAccountManager = BankAccountManager(userEmail: unwrappedEmail)
+            self.bankAccountManager?.delegate = self
+            //Calling these methods below will trigger the associated delegate method, after fetching data
+            bankAccountManager?.fetchBalance(for: .checking)
+            bankAccountManager?.fetchBalance(for: .savings)
+            bankAccountManager?.fetchBalance(for: .credit)
             
         } else {
             print("The user's email was not set in HomeVC, so account information cannot be retrieve from database")
@@ -58,7 +59,7 @@ class HomeVC: UIViewController {
     
     
     
-    //MARK: Depostit and payment
+    //MARK: Depostit to checking and savings
     @IBAction func depositToCheckingPressed(_ sender: UIButton) {
         accountToDepositTo = .checking
         performSegue(withIdentifier: K.accountScreenToDeposit, sender: self)
@@ -73,16 +74,16 @@ class HomeVC: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if self.bankAccount != nil {
+        if self.bankAccountManager != nil {
             
                 if segue.identifier == K.accountScreenToDeposit {
                     let depositVC = segue.destination as! DepositVC
-                    depositVC.bankAccount = self.bankAccount
+                    depositVC.bankAccount = self.bankAccountManager
                     depositVC.accountType = accountToDepositTo
                     
                 } else if segue.identifier == K.accountScreenToTransfer {
                     let transferVC = segue.destination as! TransferVC
-                    transferVC.bankAccount = self.bankAccount
+                    transferVC.bankAccount = self.bankAccountManager
                     if tranferType == .checking {
                         transferVC.transferType = .checking
                     } else if tranferType == .savings {
@@ -90,10 +91,21 @@ class HomeVC: UIViewController {
                     }
                     
                 } else if segue.identifier == K.accountScreenToCreditCardPayment {
-                    if let creditBalance = Double(creditBalanceLabel.text!) {
+                    if let creditBalance = Double(creditBalanceLabel.text!),
+                       let checkingBalanceString = checkingBalanceLabel.text,
+                       let savingsBalanceString = savingsBalanceLabel.text {
+                        
                         let creditPaymentVC = segue.destination as! CreditCardPaymentVC
-                        creditPaymentVC.bankAccount = self.bankAccount
+                        creditPaymentVC.bankAccount = self.bankAccountManager
                         creditPaymentVC.statementBalance = creditBalance
+                        
+                        if let checkingBalanceDouble = HomeVC.convertBalanceStringToDouble(checkingBalanceString),
+                           let savingsBalanceDouble = HomeVC.convertBalanceStringToDouble(savingsBalanceString){
+                            creditPaymentVC.checkingBalance = checkingBalanceDouble
+                            creditPaymentVC.savingsBalance = savingsBalanceDouble
+                        } else {
+                            print("Error in HomeVC.prepare(for segue:) - Unable to unwrapped the values in checking account and savings account label")
+                        }
                     }
                     
                 }
@@ -137,9 +149,6 @@ class HomeVC: UIViewController {
     }
     
     
-    
-    
-    
     //MARK: Credit card payment
     @IBAction func makeCreditCardPaymentPressed(_ sender: UIButton) {
 //        print("makeCreditCardPaymentPressed")
@@ -169,6 +178,7 @@ class HomeVC: UIViewController {
 
 //MARK: - BankAccount delegate inplementation
 extension HomeVC: BankAccountManagerDelegate {
+
     func didFinishFetching_chekingAccountBalance(_ bankAccount: BankAccountManager, balance: Double) {
         DispatchQueue.main.async {
             print("Success caling didFinishFetching_chekingAccountBalance() in HomeVC")
@@ -182,40 +192,49 @@ extension HomeVC: BankAccountManagerDelegate {
     }
     
     func didFinishFetching_creditCardAccountBalance(_ bankAccount: BankAccountManager, balance: Double) {
-        print("Success caling didFinishFetching_creditCardAccountBalance() in HomeVC")
+//        print("Success caling didFinishFetching_creditCardAccountBalance() in HomeVC")
         self.creditBalanceLabel.text = "\(balance)"
     }
     
     func didFinishDepositingMoneyTo_checkingAccount(_ bankAccount: BankAccountManager) {
-        print("Hello from didFinishDepositingMoneyTo_checkingAccount()")
-        self.bankAccount?.fetchBalance(for: .checking)
+//        print("Hello from didFinishDepositingMoneyTo_checkingAccount()")
+        self.bankAccountManager?.fetchBalance(for: .checking)
     }
     
     func didFinishDepositingMoneyTo_savingsAccount(_ bankAccount: BankAccountManager) {
-        print("Hello from didFinishDepositingMoneyTo_savingsAccount()")
-        self.bankAccount?.fetchBalance(for: .savings)
+//        print("Hello from didFinishDepositingMoneyTo_savingsAccount()")
+        self.bankAccountManager?.fetchBalance(for: .savings)
     }
     
-    func didFinishMakingCreditCardPayment(_ bankAccount: BankAccountManager) {
+    func didFinishMakingCreditCardPayment(_ bankAccountManager: BankAccountManager, from accountResponsibleForCardPayment: BankAccountType) {
         print("Hello from didFinishMakingCreditCardPayment()")
+        //Reload credit card balance, and the bank account credit card was paid from
+        self.bankAccountManager?.fetchBalance(for: .credit)
+        if accountResponsibleForCardPayment == .checking {
+            print("TEST 1: RELOAD CHECKING ACCOUNT")
+            self.bankAccountManager?.fetchBalance(for: .checking)
+        } else if accountResponsibleForCardPayment == .savings {
+            print("TEST 2: RELOAD SAVINGS ACCOUNT")
+            self.bankAccountManager?.fetchBalance(for: .savings)
+        }
     }
     
     
     func didFinishTransferringMoney_fromChecking(_ bankAccountManager: BankAccountManager, transferAmount: Double) {
-        print("Hello from didFinishTransferringMoney_fromChecking()")
+//        print("Hello from didFinishTransferringMoney_fromChecking()")
         
 //        SUBTRACT tranferAmount from, the checking account money was tranfered from. In this case that is the login user in HomeVC
         
         
-        self.bankAccount?.subtractFromChecking(transferAmount: transferAmount)
+        self.bankAccountManager?.subtractFromChecking(transferAmount: transferAmount)
     }
     
     func didFinishTransferringMoney_fromSavings(_ bankAccountManager: BankAccountManager, transferAmount: Double) {
-        print("Hello from didFinishTransferringMoney_fromSavings")
+//        print("Hello from didFinishTransferringMoney_fromSavings")
         
 //        SUBTRACT tranferAmount from, the savings account money was tranfered from. In this case that is the login user in HomeVC
         
-        self.bankAccount?.subtractFromSavings(transferAmount: transferAmount)
+        self.bankAccountManager?.subtractFromSavings(transferAmount: transferAmount)
     }
     
 }
@@ -260,6 +279,12 @@ extension HomeVC {
             return nil
         }
         
+    }
+    
+    
+    //Helper function, to convert string values to Double
+    static func convertBalanceStringToDouble(_ balanceString: String) -> Double? {
+        return Double(balanceString)
     }
     
     func fetchAccountDataAndUpdateUI() {
