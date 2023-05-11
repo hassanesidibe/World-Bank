@@ -32,16 +32,11 @@ class TransferVC: UIViewController {
             
             if let unwrappedTransferType = self.transferType {
                 
-                switch unwrappedTransferType {
-                case .checking:
+                if unwrappedTransferType == .checking {
                     unwrappedBankAccount.transferFromChecking(to: recipientEmail, amount: amount)
-                case .savings:
+                    
+                } else if unwrappedTransferType == .savings {
                     unwrappedBankAccount.transferFromSavings(to: recipientEmail, transferAmount: amount)
-                case .credit:
-                    print("Make credit card payment in TransferVC.sendButtonPressed()")
-                    unwrappedBankAccount.makeCreditCardPayment(paymentAmount: amount)
-                    
-                    
                 }
             }
             

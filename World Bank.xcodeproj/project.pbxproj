@@ -21,6 +21,7 @@
 		456458692A09B27D002DE800 /* CreditCardPaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456458682A09B27D002DE800 /* CreditCardPaymentVC.swift */; };
 		45669B5529FA3DCE00E0FB37 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45669B5429FA3DCD00E0FB37 /* K.swift */; };
 		4567744929FF0B1600222ABB /* BankAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4567744829FF0B1600222ABB /* BankAccountManager.swift */; };
+		456AAB3B2A0C75AE007012CA /* dingSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 456AAB3A2A0C75AE007012CA /* dingSound.mp3 */; };
 		45754B8D2A0880B3009EB2D0 /* CreditCardPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45754B8C2A0880B3009EB2D0 /* CreditCardPayment.swift */; };
 		45754B912A0884FE009EB2D0 /* DepositToCheckingAndSavings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45754B902A0884FE009EB2D0 /* DepositToCheckingAndSavings.swift */; };
 		45754B932A088590009EB2D0 /* TransferFromCheckingAndSavings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45754B922A08858F009EB2D0 /* TransferFromCheckingAndSavings.swift */; };
@@ -45,6 +46,7 @@
 		456458682A09B27D002DE800 /* CreditCardPaymentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardPaymentVC.swift; sourceTree = "<group>"; };
 		45669B5429FA3DCD00E0FB37 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		4567744829FF0B1600222ABB /* BankAccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAccountManager.swift; sourceTree = "<group>"; };
+		456AAB3A2A0C75AE007012CA /* dingSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dingSound.mp3; sourceTree = "<group>"; };
 		45754B8C2A0880B3009EB2D0 /* CreditCardPayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardPayment.swift; sourceTree = "<group>"; };
 		45754B902A0884FE009EB2D0 /* DepositToCheckingAndSavings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositToCheckingAndSavings.swift; sourceTree = "<group>"; };
 		45754B922A08858F009EB2D0 /* TransferFromCheckingAndSavings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferFromCheckingAndSavings.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				455CF42629F8A94D0059D990 /* LaunchScreen.storyboard */,
 				455CF42929F8A94D0059D990 /* Info.plist */,
 				455CF43229F8AE260059D990 /* GoogleService-Info.plist */,
+				456AAB3A2A0C75AE007012CA /* dingSound.mp3 */,
 			);
 			path = "World Bank";
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				455CF42829F8A94D0059D990 /* LaunchScreen.storyboard in Resources */,
+				456AAB3B2A0C75AE007012CA /* dingSound.mp3 in Resources */,
 				455CF43329F8AE260059D990 /* GoogleService-Info.plist in Resources */,
 				455CF42529F8A94D0059D990 /* Assets.xcassets in Resources */,
 				455CF42329F8A94C0059D990 /* Main.storyboard in Resources */,
