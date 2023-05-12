@@ -10,7 +10,7 @@ import AVFoundation
 
 class CreditCardPaymentVC: UIViewController {
 
-    var bankAccount: BankAccountManager?
+    var bankAccountmanager: BankAccountManager?
     var statementBalance: Double?
     
     @IBOutlet weak var balanceLabel: UILabel!
@@ -42,7 +42,7 @@ class CreditCardPaymentVC: UIViewController {
     @IBAction func payStatementBalanceButtonPressed(_ sender: UIButton) {
 //        print("payStatementBalanceButtonPressed()")
 //        I WAS WORKING ON THIS
-        if let unwrappedBankAccount = self.bankAccount,
+        if let unwrappedBankAccount = self.bankAccountmanager,
            let unwrappedStatementBalance = self.statementBalance {
             
 //            print("SATEMENT BALANCE BEFORE PAYMENT: \(unwrappedStatementBalance)")
@@ -74,28 +74,68 @@ class CreditCardPaymentVC: UIViewController {
     }
     
     @IBAction func payButtonPressed(_ sender: UIButton) {
-        if self.bankAccount != nil,
-           let amountString = amountTextField.text {
+        if self.bankAccountmanager != nil,
+           let amountTextFieldValue = amountTextField.text,
+           let unwrappedStatementBalance = self.statementBalance,
+           let unwrappedCheckingBalance = self.checkingBalance,
+           let unwrappedSavingsBalance = self.savingsBalance {
             
-            if let amountDouble = Double(amountString) {
+            if paymentAmountIsValid(amountString: amountTextFieldValue) {
                 //Make sure there is enough money in checking account, or savings before processing the credit card payment
+                let paymentAmountDouble = Double(amountTextFieldValue)!
+                let selectedAccount = accountTypeSegmentedControl.selectedSegmentIndex
                 
-                
-//                I NOW HAVE ACCESS TO checkingBalance AND  savingsBalance WHICH WILL BE SET BY HomeVC
-                
-                
-                
+                if selectedAccount == 0 {
+                    //Pay from checking account
+                    if paymentAmountDouble <= unwrappedCheckingBalance && paymentAmountDouble <= unwrappedStatementBalance {
+                        self.bankAccountmanager?.makeCreditCardPaymentUsingUserCheckingAccount(paymentAmount: paymentAmountDouble)
+                        
+                        playSound()
+                        self.dismiss(animated: true)
+                    } else {
+                        print("Error in CreditCardPaymentVC.payButtonPressed() - Not enough money in checking account to pay credit card, or the amount entered exceeds the credit card balance")
+                    }
+                    
+                } else if selectedAccount == 1 {
+                    //Pay from savings account
+//                    print("GREETINGS GREETINGS GREETINGS")
+                    if paymentAmountDouble <= unwrappedSavingsBalance && paymentAmountDouble <= unwrappedStatementBalance{
+                        self.bankAccountmanager?.makeCreditCardPaymentUsingUserSavingsAccount(paymentAmount: paymentAmountDouble)
+                        playSound()
+                        self.dismiss(animated: true)
+                    } else {
+                        print("Error in CreditCardPaymentVC.payButtonPressed() - Not enough money in savings account to pay credit card, or the amount entered exceeds the credit card balance")
+                    }
+                    
+                }
                 
                 //Hide pay statement balance button
                 payStatementBalanceButtonButtonBackground.alpha = 0
+                
+            } else {
+                print("Error in CreditCardPaymentVC.payButtonPressed() - Please provide an amount greater than zero")
             }
-            
-            
             
             
             
         }
     }
+    
+    
+    func paymentAmountIsValid(amountString: String) -> Bool {
+        if let paymentAmount = Double(amountString) {
+            
+            if paymentAmount > 0 {
+                return true
+            } else { return false}
+            
+        } else {
+            return false
+        }
+        
+    }
+    
+    
     
     
     

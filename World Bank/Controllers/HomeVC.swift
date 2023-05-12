@@ -96,8 +96,11 @@ class HomeVC: UIViewController {
                        let savingsBalanceString = savingsBalanceLabel.text {
                         
                         let creditPaymentVC = segue.destination as! CreditCardPaymentVC
-                        creditPaymentVC.bankAccount = self.bankAccountManager
+                        creditPaymentVC.bankAccountmanager = self.bankAccountManager
                         creditPaymentVC.statementBalance = creditBalance
+                        
+                        
+//                        PASSING checkingBalance and savingsBalance to CreditCardPaymentVC
                         
                         if let checkingBalanceDouble = HomeVC.convertBalanceStringToDouble(checkingBalanceString),
                            let savingsBalanceDouble = HomeVC.convertBalanceStringToDouble(savingsBalanceString){
