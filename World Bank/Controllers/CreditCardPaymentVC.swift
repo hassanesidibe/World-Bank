@@ -27,6 +27,7 @@ class CreditCardPaymentVC: UIViewController {
     
     //    I will use this imageview to show and hide the check mark
     @IBOutlet weak var checkMarkImageView: UIImageView!
+    var timer = Timer()  //To control how long the payment sound should be played
     var soundPlayer: AVAudioPlayer?
     
     
@@ -36,6 +37,8 @@ class CreditCardPaymentVC: UIViewController {
         if let unwrappedStatementBalance = self.statementBalance {
             balanceLabel.text = "Statement balance $\(unwrappedStatementBalance)"
         }
+        
+        self.checkMarkImageView.alpha = 0
     }
     
     
@@ -45,27 +48,34 @@ class CreditCardPaymentVC: UIViewController {
         if let unwrappedBankAccount = self.bankAccountmanager,
            let unwrappedStatementBalance = self.statementBalance {
             
-//            print("SATEMENT BALANCE BEFORE PAYMENT: \(unwrappedStatementBalance)")
             
-            //Hide pay other amount textfield and pay button
-            payOtherAmountStackView.alpha = 0
-            
-//            I WAS WORKING ON THIS AND CREDIT CARD PAYMENT FILE
-//            I am able to play sound now
-            
-            let accountIndex = accountTypeSegmentedControl.selectedSegmentIndex
-            
-            if accountIndex == 1 {
-                //pay credit card from savings account
-                unwrappedBankAccount.makeCreditCardPaymentUsingUserSavingsAccount(paymentAmount: unwrappedStatementBalance)
-                playSound()
+            //If statement balance is zero than we do not process any transaction
+            if unwrappedStatementBalance != 0 {
+                //Hide pay other amount textfield and pay button
+                payOtherAmountStackView.alpha = 0
+                let accountIndex = accountTypeSegmentedControl.selectedSegmentIndex
+                
+                if accountIndex == 1 {
+                    //pay credit card from savings account
+                    unwrappedBankAccount.makeCreditCardPaymentUsingUserSavingsAccount(paymentAmount: unwrappedStatementBalance)
+                    playSound()
+                    showCheckMark()
+                    self.updateStatementBalanceLabelAfterPayment(of: unwrappedStatementBalance)
+                    dismissViewAfter(numberOfSeconds: 1)
+                } else {
+                    //Pay credit card from checking account
+                    unwrappedBankAccount.makeCreditCardPaymentUsingUserCheckingAccount(paymentAmount: unwrappedStatementBalance)
+                    playSound()
+                    showCheckMark()
+                    self.updateStatementBalanceLabelAfterPayment(of: unwrappedStatementBalance)
+                    dismissViewAfter(numberOfSeconds: 1)
+                }
+                
             } else {
-                //Pay credit card from checking account
-                unwrappedBankAccount.makeCreditCardPaymentUsingUserCheckingAccount(paymentAmount: unwrappedStatementBalance)
-                playSound()
+                //The credit card balance is Zero here, so we will dismiss the view after 2 seconds
+                self.balanceLabel.textColor = .red
+                self.dismissViewAfter(numberOfSeconds: 2)
             }
-            
-            //play a sound, change statement balance shown in the label to Zero, and dismiss view
             
         } else {
             print("Error in CreditCardPaymentVC.payStatementBalanceButtonPressed(): bank account or statement balance is nil")
@@ -89,24 +99,27 @@ class CreditCardPaymentVC: UIViewController {
                     //Pay from checking account
                     if paymentAmountDouble <= unwrappedCheckingBalance && paymentAmountDouble <= unwrappedStatementBalance {
                         self.bankAccountmanager?.makeCreditCardPaymentUsingUserCheckingAccount(paymentAmount: paymentAmountDouble)
-                        
                         playSound()
-                        self.dismiss(animated: true)
+                        showCheckMark()
+                        self.updateStatementBalanceLabelAfterPayment(of: paymentAmountDouble)
+                        dismissViewAfter(numberOfSeconds: 1)
+                        
                     } else {
                         print("Error in CreditCardPaymentVC.payButtonPressed() - Not enough money in checking account to pay credit card, or the amount entered exceeds the credit card balance")
                     }
                     
                 } else if selectedAccount == 1 {
                     //Pay from savings account
-//                    print("GREETINGS GREETINGS GREETINGS")
                     if paymentAmountDouble <= unwrappedSavingsBalance && paymentAmountDouble <= unwrappedStatementBalance{
                         self.bankAccountmanager?.makeCreditCardPaymentUsingUserSavingsAccount(paymentAmount: paymentAmountDouble)
                         playSound()
-                        self.dismiss(animated: true)
+                        self.showCheckMark()
+                        self.updateStatementBalanceLabelAfterPayment(of: paymentAmountDouble)
+                        dismissViewAfter(numberOfSeconds: 1)
+                        
                     } else {
                         print("Error in CreditCardPaymentVC.payButtonPressed() - Not enough money in savings account to pay credit card, or the amount entered exceeds the credit card balance")
                     }
-                    
                 }
                 
                 //Hide pay statement balance button
@@ -115,12 +128,16 @@ class CreditCardPaymentVC: UIViewController {
             } else {
                 print("Error in CreditCardPaymentVC.payButtonPressed() - Please provide an amount greater than zero")
             }
-            
-            
-            
         }
     }
     
+    
+
+    
+    
+
+    
+    //MARK: - Helper functions
     
     func paymentAmountIsValid(amountString: String) -> Bool {
         if let paymentAmount = Double(amountString) {
@@ -135,11 +152,6 @@ class CreditCardPaymentVC: UIViewController {
         
     }
     
-    
-    
-    
-    
-    
     func playSound() {
         guard let path = Bundle.main.path(forResource: "dingSound", ofType:"mp3") else {
             return }
@@ -152,5 +164,40 @@ class CreditCardPaymentVC: UIViewController {
         } catch let error {
             print(error.localizedDescription)
         }
+    }
+    
+    //Dismiss CreditCardPaymentVC after the specified number of seconds
+    func dismissViewAfter(numberOfSeconds: Int) {
+        var secondsPassed = 0
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (Timer) in
+            if secondsPassed < numberOfSeconds {
+                secondsPassed += 1
+            } else {
+                self.timer.invalidate()
+                self.dismiss(animated: true)
+            }
+        }
+    }
+    
+    private func showCheckMark() {
+        self.checkMarkImageView.alpha = 1
+    }
+    
+    func updateStatementBalanceLabelAfterPayment(of payedAmount: Double) {
+       //Make sure the payedAmount is less than or equal to the statement balance, before updating the statement balance label
+        if let unwrappedStatementBalance = self.statementBalance {
+            if payedAmount <= unwrappedStatementBalance {
+                let newCreditBalance = unwrappedStatementBalance - payedAmount
+                self.balanceLabel.text = "Statement balance $\(newCreditBalance)"
+                
+            } else { print("Error in CreditCardPaymentVC.updateStatementBalanceLabelAfterPayment() - peyed amount is greater than statement balance")}
+            
+        } else {
+            print("Error in CreditCardPaymentVC.updateStatementBalanceLabelAfterPayment() - statement balance variable is nil")
+        }
+        
+        
+        
     }
 }
