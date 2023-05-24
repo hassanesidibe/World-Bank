@@ -56,7 +56,7 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Sign in" cornerStyle="capsule">
                                                     <backgroundConfiguration key="background">
-                                                        <color key="backgroundColor" systemColor="systemMintColor"/>
+                                                        <color key="backgroundColor" red="0.088829867539999996" green="0.6320435405" blue="0.52224236729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </backgroundConfiguration>
                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
@@ -69,7 +69,7 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Sign up with World Bank" cornerStyle="capsule">
                                                     <backgroundConfiguration key="background">
-                                                        <color key="backgroundColor" systemColor="systemMintColor"/>
+                                                        <color key="backgroundColor" red="0.088829867539999996" green="0.6320435405" blue="0.52224236729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </backgroundConfiguration>
                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
@@ -190,7 +190,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Sign up with World Bank" cornerStyle="capsule">
                                     <backgroundConfiguration key="background">
-                                        <color key="backgroundColor" systemColor="systemMintColor"/>
+                                        <color key="backgroundColor" red="0.088829867539999996" green="0.6320435405" blue="0.52224236729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </backgroundConfiguration>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
@@ -308,25 +308,29 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jMd-Yf-7XZ">
                                                         <rect key="frame" x="0.0" y="106.66666666666669" width="323" height="35"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEw-qc-wjD">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEw-qc-wjD">
                                                                 <rect key="frame" x="0.0" y="0.0" width="160.66666666666666" height="35"/>
                                                                 <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" title="Deposit"/>
+                                                                <buttonConfiguration key="configuration" style="plain" title="Deposit">
+                                                                    <color key="baseForegroundColor" red="0.088829867539999996" green="0.6320435405" blue="0.52224236729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </buttonConfiguration>
                                                                 <connections>
                                                                     <action selector="depositToCheckingPressed:" destination="W1r-fm-2ap" eventType="touchUpInside" id="eaM-yG-Lcu"/>
                                                                 </connections>
                                                             </button>
-                                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="slU-IF-eul" userLabel="vertical separator view">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="slU-IF-eul" userLabel="vertical separator view">
                                                                 <rect key="frame" x="160.66666666666666" y="0.0" width="1" height="35"/>
                                                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="1" id="svs-pO-f8S"/>
                                                                 </constraints>
                                                             </view>
-                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G2E-9K-yCP">
+                                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G2E-9K-yCP">
                                                                 <rect key="frame" x="161.66666666666663" y="0.0" width="161.33333333333337" height="35"/>
                                                                 <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" title="Transfer"/>
+                                                                <buttonConfiguration key="configuration" style="plain" title="Transfer">
+                                                                    <color key="baseForegroundColor" red="0.088829867539999996" green="0.6320435405" blue="0.52224236729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </buttonConfiguration>
                                                                 <connections>
                                                                     <action selector="transferFromCheckingPressed:" destination="W1r-fm-2ap" eventType="touchUpInside" id="zRW-Ua-tif"/>
                                                                 </connections>
@@ -409,25 +413,29 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V4y-zB-t9E">
                                                         <rect key="frame" x="0.0" y="106.66666666666669" width="323" height="35"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWM-mz-Aj7">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWM-mz-Aj7">
                                                                 <rect key="frame" x="0.0" y="0.0" width="160.66666666666666" height="35"/>
                                                                 <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" title="Deposit"/>
+                                                                <buttonConfiguration key="configuration" style="plain" title="Deposit">
+                                                                    <color key="baseForegroundColor" red="0.088829867539999996" green="0.6320435405" blue="0.52224236729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </buttonConfiguration>
                                                                 <connections>
                                                                     <action selector="depositToSavingsPressed:" destination="W1r-fm-2ap" eventType="touchUpInside" id="Rf3-Pq-889"/>
                                                                 </connections>
                                                             </button>
-                                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vI4-A4-0bI" userLabel="vertical separator view">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vI4-A4-0bI" userLabel="vertical separator view">
                                                                 <rect key="frame" x="160.66666666666666" y="0.0" width="1" height="35"/>
                                                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="1" id="nOu-Ui-dXp"/>
                                                                 </constraints>
                                                             </view>
-                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ca-vV-9eK">
+                                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ca-vV-9eK">
                                                                 <rect key="frame" x="161.66666666666663" y="0.0" width="161.33333333333337" height="35"/>
                                                                 <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" title="Transfer"/>
+                                                                <buttonConfiguration key="configuration" style="plain" title="Transfer">
+                                                                    <color key="baseForegroundColor" red="0.088829867539999996" green="0.6320435405" blue="0.52224236729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </buttonConfiguration>
                                                                 <connections>
                                                                     <action selector="transferFromSavingsPressed:" destination="W1r-fm-2ap" eventType="touchUpInside" id="Jxi-qc-cc8"/>
                                                                 </connections>
@@ -517,7 +525,9 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FCe-ME-lQf">
                                                                 <rect key="frame" x="88.333333333333329" y="0.0" width="135.66666666666669" height="35"/>
                                                                 <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" title="Make payment"/>
+                                                                <buttonConfiguration key="configuration" style="plain" title="Make payment">
+                                                                    <color key="baseForegroundColor" red="0.088829867539999996" green="0.6320435405" blue="0.52224236729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </buttonConfiguration>
                                                                 <connections>
                                                                     <action selector="makeCreditCardPaymentPressed:" destination="W1r-fm-2ap" eventType="touchUpInside" id="1X5-kP-OFA"/>
                                                                 </connections>
@@ -618,7 +628,7 @@
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="PLz-pg-2t6">
                                                 <rect key="frame" x="97.666666666666657" y="0.99999999999999289" width="97.666666666666657" height="126.66666666666666"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="tintColor" systemColor="systemMintColor"/>
+                                                <color key="tintColor" red="0.088829867539999996" green="0.6320435405" blue="0.52224236729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5h3-nS-MIf">
                                                 <rect key="frame" x="195.33333333333334" y="0.0" width="97.666666666666657" height="128"/>
@@ -677,7 +687,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="293" height="34.333333333333336"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="filled" title="Pay statement balance" cornerStyle="capsule">
-                                                                    <color key="baseBackgroundColor" systemColor="systemMintColor"/>
+                                                                    <color key="baseBackgroundColor" red="0.088829867539999996" green="0.6320435405" blue="0.52224236729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </buttonConfiguration>
                                                                 <connections>
                                                                     <action selector="payStatementBalanceButtonPressed:" destination="Sg1-Hh-c8B" eventType="touchUpInside" id="qBd-JL-k3Y"/>
@@ -709,7 +719,7 @@
                                                         <rect key="frame" x="0.0" y="39" width="293" height="34.333333333333343"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="filled" title="Pay" cornerStyle="capsule">
-                                                            <color key="baseBackgroundColor" systemColor="systemMintColor"/>
+                                                            <color key="baseBackgroundColor" red="0.088829867539999996" green="0.6320435405" blue="0.52224236729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </buttonConfiguration>
                                                         <connections>
                                                             <action selector="payButtonPressed:" destination="Sg1-Hh-c8B" eventType="touchUpInside" id="wXL-F2-GXp"/>
@@ -790,7 +800,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Send it now" cornerStyle="capsule">
                                             <backgroundConfiguration key="background">
-                                                <color key="backgroundColor" systemColor="systemMintColor"/>
+                                                <color key="backgroundColor" red="0.088829867539999996" green="0.6320435405" blue="0.52224236729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </backgroundConfiguration>
                                         </buttonConfiguration>
                                         <connections>
@@ -834,10 +844,36 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="qbz-QU-NpV">
-                                <rect key="frame" x="35" y="340" width="323" height="150"/>
+                                <rect key="frame" x="50" y="150.00000000000003" width="293" height="295.66666666666674"/>
                                 <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="FaF-Mr-8fJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="293" height="128"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X04-gj-AcP">
+                                                <rect key="frame" x="0.0" y="0.0" width="73.333333333333329" height="128"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="8it-om-gQd">
+                                                <rect key="frame" x="73.333333333333343" y="0.99999999999999289" width="73.333333333333343" height="126.66666666666666"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" red="0.088829867539999996" green="0.6320435405" blue="0.52224236729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xmark.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9m1-Lm-ec2">
+                                                <rect key="frame" x="146.66666666666666" y="0.99999999999999289" width="73" height="126.66666666666666"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" systemColor="systemRedColor"/>
+                                            </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aFG-ly-ri1">
+                                                <rect key="frame" x="219.66666666666671" y="0.0" width="73.333333333333343" height="128"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="128" id="JOI-Mc-kDd"/>
+                                        </constraints>
+                                    </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Checking or savings account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GN2-cn-ohd">
-                                        <rect key="frame" x="0.0" y="0.0" width="323" height="40"/>
+                                        <rect key="frame" x="0.0" y="143" width="293" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="k8J-Il-lKJ"/>
                                         </constraints>
@@ -846,48 +882,38 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Deposit Amount" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SLA-9W-If3">
-                                        <rect key="frame" x="0.0" y="55" width="323" height="40"/>
+                                        <rect key="frame" x="0.0" y="198" width="293" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="BFV-HS-KGN"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="fya-zT-h1J">
-                                        <rect key="frame" x="0.0" y="110" width="323" height="40"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n2F-b5-fZo">
-                                                <rect key="frame" x="0.0" y="0.0" width="107.66666666666667" height="40"/>
-                                            </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BOQ-0g-wwx">
-                                                <rect key="frame" x="107.66666666666666" y="0.0" width="107.66666666666666" height="40"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Deposit">
-                                                    <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
-                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="depositButtonPressed:" destination="EsD-Nw-E1H" eventType="touchUpInside" id="yqM-xy-fa7"/>
-                                                </connections>
-                                            </button>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nR9-fv-2bj">
-                                                <rect key="frame" x="215.33333333333334" y="0.0" width="107.66666666666666" height="40"/>
-                                            </view>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="6R8-co-pFS"/>
-                                        </constraints>
-                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BOQ-0g-wwx">
+                                        <rect key="frame" x="0.0" y="252.99999999999997" width="293" height="42.666666666666657"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Deposit" cornerStyle="capsule">
+                                            <backgroundConfiguration key="background">
+                                                <color key="backgroundColor" red="0.088829867539999996" green="0.6320435405" blue="0.52224236729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </backgroundConfiguration>
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="24"/>
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="depositButtonPressed:" destination="EsD-Nw-E1H" eventType="touchUpInside" id="yqM-xy-fa7"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Rvy-75-zEr"/>
                         <color key="backgroundColor" red="0.2196078431372549" green="0.47058823529411764" blue="0.77254901960784317" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="qbz-QU-NpV" firstAttribute="leading" secondItem="UXv-Hx-z1M" secondAttribute="leading" constant="50" id="1q6-dD-Ubc"/>
+                            <constraint firstAttribute="trailing" secondItem="qbz-QU-NpV" secondAttribute="trailing" constant="50" id="CZv-Zg-KUr"/>
                             <constraint firstItem="Lau-Re-Tg3" firstAttribute="top" secondItem="UXv-Hx-z1M" secondAttribute="top" id="KCS-3c-Pgn"/>
-                            <constraint firstItem="qbz-QU-NpV" firstAttribute="top" secondItem="Rvy-75-zEr" secondAttribute="top" constant="340" id="Wl9-sq-BZg"/>
+                            <constraint firstItem="qbz-QU-NpV" firstAttribute="top" secondItem="Rvy-75-zEr" secondAttribute="top" constant="150" id="Wl9-sq-BZg"/>
                             <constraint firstItem="Lau-Re-Tg3" firstAttribute="leading" secondItem="Rvy-75-zEr" secondAttribute="leading" id="bz2-cL-WRo"/>
-                            <constraint firstItem="qbz-QU-NpV" firstAttribute="centerX" secondItem="UXv-Hx-z1M" secondAttribute="centerX" id="lQB-py-LMZ"/>
                             <constraint firstAttribute="bottom" secondItem="Lau-Re-Tg3" secondAttribute="bottom" id="tSh-B8-Ue5"/>
                             <constraint firstItem="Rvy-75-zEr" firstAttribute="trailing" secondItem="Lau-Re-Tg3" secondAttribute="trailing" id="ta1-rC-Uns"/>
                         </constraints>
@@ -896,7 +922,9 @@
                     <navigationItem key="navigationItem" id="8az-J2-ktL"/>
                     <connections>
                         <outlet property="amountTextField" destination="SLA-9W-If3" id="PmV-W0-kPY"/>
+                        <outlet property="checkmark" destination="8it-om-gQd" id="lnR-aI-c5B"/>
                         <outlet property="messageLabel" destination="GN2-cn-ohd" id="0fa-Wd-1q3"/>
+                        <outlet property="xmark" destination="9m1-Lm-ec2" id="lgd-Hn-Gtv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A5z-wu-Edv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -930,11 +958,12 @@
         <image name="sanDiego1" width="1242" height="2208"/>
         <image name="sanFransisco" width="1000" height="1250"/>
         <image name="traffic" width="1000" height="1500"/>
+        <image name="xmark.circle" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemMintColor">
-            <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
