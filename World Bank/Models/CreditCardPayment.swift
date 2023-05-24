@@ -30,7 +30,7 @@ extension BankAccountManager {
                            let currentCheckingBalanceDouble = Double(checkingAccountBalanceString) {
                             
                             //check if value of savings account is greater than the credit card payment amount, before withdrawing money from savings account.
-                            if currentCheckingBalanceDouble >= currentCreditCardBalanceDouble {
+                            if currentCheckingBalanceDouble >= paymentAmount {
                                 let newCreditCardBalance = currentCreditCardBalanceDouble - paymentAmount
                                 let newCheckingAccountBalance = currentCheckingBalanceDouble - paymentAmount
                                 //update credit card, and savings in the firestore
@@ -71,7 +71,8 @@ extension BankAccountManager {
                            let currentSavingsBalanceDouble = Double(savingsAccountBalanceString) {
                             
                             //check if value of savings account is greater than the credit card payment amount, before withdrawing money from savings account.
-                            if currentSavingsBalanceDouble >= currentCreditCardBalanceDouble {
+//                            if currentSavingsBalanceDouble >= currentCreditCardBalanceDouble {
+                            if currentSavingsBalanceDouble >= paymentAmount {
                                 let newCreditCardBalance = currentCreditCardBalanceDouble - paymentAmount
                                 let newSavingsAccountBalance = currentSavingsBalanceDouble - paymentAmount
                                 //update credit card, and savings in the firestore

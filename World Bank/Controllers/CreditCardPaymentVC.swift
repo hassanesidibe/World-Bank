@@ -104,6 +104,8 @@ class CreditCardPaymentVC: UIViewController {
                         self.updateStatementBalanceLabelAfterPayment(of: paymentAmountDouble)
                         dismissViewAfter(numberOfSeconds: 1)
                         
+//                        THIS FILE IS THE LAST THING I WAS WORKING ON, EVERYTHING IS WORKING AS INTENDED
+                        
                     } else {
                         print("Error in CreditCardPaymentVC.payButtonPressed() - Not enough money in checking account to pay credit card, or the amount entered exceeds the credit card balance")
                     }
