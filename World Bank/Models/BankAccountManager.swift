@@ -76,7 +76,6 @@ extension BankAccountManager {
                             
                         }
                         
-                        
                         //Call the delegate methods with the balance retrieved from firestore
                         if let unwrappedBalanceString = balanceString {
                             if let balanceDouble = Double(unwrappedBalanceString) {

@@ -72,6 +72,7 @@ class HomeVC: UIViewController {
         performSegue(withIdentifier: K.accountScreenToDeposit, sender: self)
     }
     
+    //MARK: - SEGUES
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if self.bankAccountManager != nil {
@@ -84,10 +85,18 @@ class HomeVC: UIViewController {
                 } else if segue.identifier == K.accountScreenToTransfer {
                     let transferVC = segue.destination as! TransferVC
                     transferVC.bankAccount = self.bankAccountManager
+                    
                     if tranferType == .checking {
-                        transferVC.transferType = .checking
+                        if let checkingBalance = Double(checkingBalanceLabel.text!) {
+                            transferVC.transferType = .checking
+                            transferVC.accountBalance = checkingBalance
+                        }
+                        
                     } else if tranferType == .savings {
-                        transferVC.transferType = .savings
+                        if let savingsBalance = Double(savingsBalanceLabel.text!) {
+                            transferVC.transferType = .savings
+                            transferVC.accountBalance = savingsBalance
+                        }
                     }
                     
                 } else if segue.identifier == K.accountScreenToCreditCardPayment {
@@ -99,11 +108,10 @@ class HomeVC: UIViewController {
                         creditPaymentVC.bankAccountmanager = self.bankAccountManager
                         creditPaymentVC.statementBalance = creditBalance
                         
-                        
 //                        PASSING checkingBalance and savingsBalance to CreditCardPaymentVC
                         
-                        if let checkingBalanceDouble = HomeVC.convertBalanceStringToDouble(checkingBalanceString),
-                           let savingsBalanceDouble = HomeVC.convertBalanceStringToDouble(savingsBalanceString){
+                        if let checkingBalanceDouble = Double(checkingBalanceString),
+                           let savingsBalanceDouble = Double(savingsBalanceString) {
                             creditPaymentVC.checkingBalance = checkingBalanceDouble
                             creditPaymentVC.savingsBalance = savingsBalanceDouble
                         } else {
@@ -119,7 +127,7 @@ class HomeVC: UIViewController {
     }
     
     
-
+//MARK: - Transfer
     
     
     
@@ -284,11 +292,6 @@ extension HomeVC {
         
     }
     
-    
-    //Helper function, to convert string values to Double
-    static func convertBalanceStringToDouble(_ balanceString: String) -> Double? {
-        return Double(balanceString)
-    }
     
     func fetchAccountDataAndUpdateUI() {
         
